@@ -1,6 +1,6 @@
 import TextInput from "./TextInput";
 
-export default function ContactForm({ information }) {
+export default function ContactForm({ information, onChange }) {
   const { email, phone, website } = information.contact;
   return (
     <div>
@@ -12,6 +12,7 @@ export default function ContactForm({ information }) {
         type="email"
         required={true}
         value={email}
+        onChange={onChange}
       />
 
       <TextInput
@@ -20,6 +21,7 @@ export default function ContactForm({ information }) {
         placeholder="Phone"
         required={true}
         value={phone}
+        onChange={onChange}
       />
 
       <TextInput
@@ -28,6 +30,7 @@ export default function ContactForm({ information }) {
         placeholder="Website"
         required={false}
         value={website}
+        onChange={onChange}
       />
     </div>
   );

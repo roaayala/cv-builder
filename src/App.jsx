@@ -1,5 +1,5 @@
 import { useState } from "react";
-import CvForm from "./components/Form";
+import Form from "./components/Form";
 import Resume from "./components/Resume";
 
 export default function App() {
@@ -36,9 +36,29 @@ export default function App() {
       },
     ],
   });
+
+  const handleChange = (e) => {
+    const editedResume = { ...resume, [e.target.name]: e.target.value };
+
+    setResume(editedResume);
+  };
+
+  const handleContactChange = (e) => {
+    const editedResume = {
+      ...resume,
+      contact: { ...resume.contact, [e.target.name]: e.target.value },
+    };
+
+    setResume(editedResume);
+  };
+
   return (
     <>
-      <CvForm information={resume} />
+      <Form
+        information={resume}
+        onChange={handleChange}
+        onContactChange={handleContactChange}
+      />
       <Resume information={resume} />
     </>
   );

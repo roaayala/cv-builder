@@ -1,3 +1,9 @@
+import Contact from "./resumes/Contact";
+
 export default function Resume({ information }) {
-  return <h1>Resume</h1>;
+  return (
+    <div>
+      <Contact information={information} />
+    </div>
+  );
 }

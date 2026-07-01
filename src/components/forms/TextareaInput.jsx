@@ -6,6 +6,7 @@ export default function TextareaInput({
   placeholder,
   required = false,
   value,
+  onChange,
 }) {
   const [profile, setProfile] = useState(value);
   return (
@@ -16,10 +17,12 @@ export default function TextareaInput({
         id={id}
         placeholder={placeholder}
         required={required}
-        onChange={(e) => setProfile(e.target.value)}
-      >
-        {profile}
-      </textarea>
+        onChange={(e) => {
+          onChange(e);
+          setProfile(e.target.value);
+        }}
+        value={profile}
+      />
     </div>
   );
 }

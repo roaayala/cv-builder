@@ -1,7 +1,7 @@
 import TextareaInput from "./TextareaInput";
 import TextInput from "./TextInput";
 
-export default function PersonalInformationForm({ information }) {
+export default function PersonalInformationForm({ information, onChange }) {
   const { name, jobTitle, profile, address } = information;
   return (
     <div>
@@ -12,6 +12,7 @@ export default function PersonalInformationForm({ information }) {
         placeholder="Name"
         required={true}
         value={name}
+        onChange={onChange}
       />
 
       <TextInput
@@ -20,6 +21,7 @@ export default function PersonalInformationForm({ information }) {
         placeholder="Job Title"
         required={true}
         value={jobTitle}
+        onChange={onChange}
       />
 
       <TextareaInput
@@ -28,13 +30,16 @@ export default function PersonalInformationForm({ information }) {
         id="profile"
         placeholder="Profile"
         value={profile}
+        onChange={onChange}
       />
+
       <TextareaInput
         required={true}
         label="Address"
         id="address"
         placeholder="Address"
         value={address}
+        onChange={onChange}
       />
     </div>
   );

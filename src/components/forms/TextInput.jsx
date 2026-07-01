@@ -7,6 +7,7 @@ export default function TextInput({
   required = false,
   value,
   type = "text",
+  onChange,
 }) {
   const [name, setName] = useState(value);
   return (
@@ -19,7 +20,10 @@ export default function TextInput({
         name={id}
         value={name}
         type={type}
-        onChange={(e) => setName(e.target.value)}
+        onChange={(e) => {
+          onChange(e);
+          setName(e.target.value);
+        }}
       />
     </div>
   );
