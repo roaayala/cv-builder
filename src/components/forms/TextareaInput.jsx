@@ -1,6 +1,12 @@
 import { useState } from "react";
 
-export default function TextareaInput({ id, label, placeholder, value }) {
+export default function TextareaInput({
+  id,
+  label,
+  placeholder,
+  required = false,
+  value,
+}) {
   const [profile, setProfile] = useState(value);
   return (
     <div>
@@ -9,6 +15,7 @@ export default function TextareaInput({ id, label, placeholder, value }) {
         name={id}
         id={id}
         placeholder={placeholder}
+        required={required}
         onChange={(e) => setProfile(e.target.value)}
       >
         {profile}

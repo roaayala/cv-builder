@@ -4,6 +4,7 @@ export default function TextInput({
   id,
   label,
   placeholder,
+  required = false,
   value,
   type = "text",
 }) {
@@ -12,6 +13,7 @@ export default function TextInput({
     <div>
       <label htmlFor={id}>{label}</label>
       <input
+        required={required}
         id={id}
         placeholder={placeholder}
         name={id}

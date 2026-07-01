@@ -5,6 +5,7 @@ import Resume from "./components/Resume";
 export default function App() {
   const [resume, setResume] = useState({
     name: "Budi Santoso",
+    jobTitle: "Fullstack Web Developer",
     profile:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nunc leo, posuere eget odio et, pulvinar posuere ligula. Praesent cursus massa in nisl condimentum, eu faucibus turpis fringilla. Morbi tincidunt cursus ipsum non finibus. Quisque porta, metus et faucibus condimentum, neque orci interdum ipsum, nec luctus tellus nunc in tortor. Sed malesuada, lorem eu placerat tristique, quam est sollicitudin massa, sed semper ex magna sed ligula. Proin at nisi lorem.",
     contact: {
