@@ -1,3 +1,4 @@
+import TextareaInput from "./TextareaInput";
 import TextInput from "./TextInput";
 
 export default function PersonalInformationForm({ information }) {
@@ -9,6 +10,13 @@ export default function PersonalInformationForm({ information }) {
         id="name"
         placeholder="Name"
         value={information.name}
+      />
+
+      <TextareaInput
+        label="Profile"
+        id="profile"
+        placeholder="Profile"
+        value={information.profile}
       />
     </div>
   );
