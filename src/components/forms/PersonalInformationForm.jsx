@@ -2,6 +2,7 @@ import TextareaInput from "./TextareaInput";
 import TextInput from "./TextInput";
 
 export default function PersonalInformationForm({ information }) {
+  const { name, jobTitle, profile, address } = information;
   return (
     <div>
       <h3>Personal Information</h3>
@@ -10,7 +11,7 @@ export default function PersonalInformationForm({ information }) {
         id="name"
         placeholder="Name"
         required={true}
-        value={information.name}
+        value={name}
       />
 
       <TextInput
@@ -18,7 +19,7 @@ export default function PersonalInformationForm({ information }) {
         id="jobTitle"
         placeholder="Job Title"
         required={true}
-        value={information.jobTitle}
+        value={jobTitle}
       />
 
       <TextareaInput
@@ -26,7 +27,14 @@ export default function PersonalInformationForm({ information }) {
         label="Profile"
         id="profile"
         placeholder="Profile"
-        value={information.profile}
+        value={profile}
+      />
+      <TextareaInput
+        required={true}
+        label="Address"
+        id="address"
+        placeholder="Address"
+        value={address}
       />
     </div>
   );
