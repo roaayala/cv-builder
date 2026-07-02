@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Button from "../commons/Button";
 
 export default function TextareaInput({
   id,
@@ -8,21 +9,40 @@ export default function TextareaInput({
   value,
   onChange,
 }) {
-  const [profile, setProfile] = useState(value);
+  const [isEdit, setIsEdit] = useState(false);
+
+  const handleEdit = (e) => {
+    e.preventDefault();
+    setIsEdit(true);
+  };
+
+  const handleSave = (e) => {
+    e.preventDefault();
+    setIsEdit(false);
+  };
+
   return (
     <div>
       <label htmlFor={id}>{label}</label>
-      <textarea
-        name={id}
-        id={id}
-        placeholder={placeholder}
-        required={required}
-        onChange={(e) => {
-          onChange(e);
-          setProfile(e.target.value);
-        }}
-        value={profile}
-      />
+      {isEdit ? (
+        <div>
+          <textarea
+            name={id}
+            id={id}
+            placeholder={placeholder}
+            required={required}
+            onChange={onChange}
+            value={value}
+          />
+
+          <Button text="Save" onClick={handleSave} />
+        </div>
+      ) : (
+        <div>
+          <span>{value}</span>
+          <Button text="Edit" onClick={handleEdit} />
+        </div>
+      )}
     </div>
   );
 }
