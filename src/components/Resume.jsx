@@ -4,7 +4,7 @@ import Profile from "./resumes/Profile";
 
 export default function Resume({ information }) {
   return (
-    <div>
+    <div className="flex-1">
       <Header infomartion={information} />
       <Profile information={information} />
       <Contact information={information} />

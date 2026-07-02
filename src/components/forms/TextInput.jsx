@@ -40,7 +40,7 @@ export default function TextInput({
         </div>
       ) : (
         <div>
-          <span>{value}</span>
+          <p>{value}</p>
           <Button text="Edit" onClick={handleEdit} />
         </div>
       )}

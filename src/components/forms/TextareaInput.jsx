@@ -39,7 +39,7 @@ export default function TextareaInput({
         </div>
       ) : (
         <div>
-          <span>{value}</span>
+          <p>{value}</p>
           <Button text="Edit" onClick={handleEdit} />
         </div>
       )}

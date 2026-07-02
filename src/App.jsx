@@ -55,14 +55,47 @@ export default function App() {
     setResume(editedResume);
   };
 
+  const handleSkill = {
+    add: (name) => {
+      const newSkill = { id: crypto.randomUUID(), name };
+
+      setResume({
+        ...resume,
+        skills: [...resume.skills, newSkill],
+      });
+    },
+
+    edit: (id, newName) => {
+      const updatedSkill = resume.skills.map((skill) =>
+        skill.id === id ? { ...skill, name: newName } : skill,
+      );
+
+      setResume({
+        ...resume,
+        skills: updatedSkill,
+      });
+    },
+
+    delete: (id) => {
+      const filteredSkill = resume.skills.filter((skill) => skill.id !== id);
+
+      setResume({
+        ...resume,
+        skills: filteredSkill,
+      });
+    },
+  };
+
   return (
-    <>
+    <div className="flex gap-4">
       <Form
         information={resume}
         onChange={handleChange}
         onContactChange={handleContactChange}
+        skillHandlers={handleSkill}
       />
+
       <Resume information={resume} />
-    </>
+    </div>
   );
 }
