@@ -15,7 +15,39 @@ export default function SkillForm({ information, handlers }) {
     <div>
       <h3>{skills.length > 1 ? "Skills" : "Skill"}</h3>
 
-      {isAdd ? (
+      {skills.length < 1 ? (
+        <p>No skills added yet.</p>
+      ) : (
+        <ul>
+          {skills.map((skill) => (
+            <li key={skill.id}>
+              {isEdit ? (
+                <></>
+              ) : (
+                <>
+                  <p>{skill.name}</p>
+                  <Button
+                    text="Edit"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setIsEdit(true);
+                    }}
+                  />
+                  <Button
+                    text="Delete"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handlers.delete(skill.id);
+                    }}
+                  />
+                </>
+              )}
+            </li>
+          ))}
+        </ul>
+      )}
+
+      {isAdd && (
         <div>
           <div>
             <label htmlFor="newSkill">New Skill</label>
@@ -53,7 +85,9 @@ export default function SkillForm({ information, handlers }) {
             }}
           />
         </div>
-      ) : (
+      )}
+
+      {!isAdd && (
         <Button
           text="Add"
           onClick={(e) => {
@@ -61,38 +95,6 @@ export default function SkillForm({ information, handlers }) {
             setIsAdd(true);
           }}
         />
-      )}
-
-      {skills.length < 1 ? (
-        <p>No skills added yet.</p>
-      ) : (
-        <ul>
-          {skills.map((skill) => (
-            <li key={skill.id}>
-              {isEdit ? (
-                <></>
-              ) : (
-                <>
-                  <p>{skill.name}</p>
-                  <Button
-                    text="Edit"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      setIsEdit(true);
-                    }}
-                  />
-                  <Button
-                    text="Delete"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      handlers.delete(skill.id);
-                    }}
-                  />
-                </>
-              )}
-            </li>
-          ))}
-        </ul>
       )}
     </div>
   );
