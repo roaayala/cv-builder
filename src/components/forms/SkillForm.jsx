@@ -9,6 +9,7 @@ export default function SkillForm({ information, handlers }) {
 
   const [isEdit, setIsEdit] = useState(false);
   const [editId, setEditId] = useState("");
+  const [editedSkill, setEditedSkill] = useState("");
 
   return (
     <div>
@@ -62,21 +63,37 @@ export default function SkillForm({ information, handlers }) {
         />
       )}
 
-      <ul>
-        {skills.map((skill) => (
-          <li key={skill.id}>
-            {isEdit ? (
-              <></>
-            ) : (
-              <>
-                <p>{skill.name}</p>
-                <Button text="Edit" />
-                <Button text="Delete" />
-              </>
-            )}
-          </li>
-        ))}
-      </ul>
+      {skills.length < 1 ? (
+        <p>No skills added yet.</p>
+      ) : (
+        <ul>
+          {skills.map((skill) => (
+            <li key={skill.id}>
+              {isEdit ? (
+                <></>
+              ) : (
+                <>
+                  <p>{skill.name}</p>
+                  <Button
+                    text="Edit"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setIsEdit(true);
+                    }}
+                  />
+                  <Button
+                    text="Delete"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handlers.delete(skill.id);
+                    }}
+                  />
+                </>
+              )}
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 }
