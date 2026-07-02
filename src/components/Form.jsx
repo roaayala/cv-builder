@@ -1,5 +1,6 @@
 import ContactForm from "./forms/ContactForm";
 import PersonalInformationForm from "./forms/PersonalInformationForm";
+import SkillForm from "./forms/SkillForm";
 
 export default function Form({ information, onChange, onContactChange }) {
   return (
@@ -11,6 +12,8 @@ export default function Form({ information, onChange, onContactChange }) {
         />
 
         <ContactForm information={information} onChange={onContactChange} />
+
+        <SkillForm information={information} />
       </form>
     </>
   );

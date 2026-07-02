@@ -11,7 +11,7 @@ export default function App() {
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nunc leo, posuere eget odio et, pulvinar posuere ligula. Praesent cursus massa in nisl condimentum, eu faucibus turpis fringilla. Morbi tincidunt cursus ipsum non finibus. Quisque porta, metus et faucibus condimentum, neque orci interdum ipsum, nec luctus tellus nunc in tortor. Sed malesuada, lorem eu placerat tristique, quam est sollicitudin massa, sed semper ex magna sed ligula. Proin at nisi lorem.",
     contact: {
       email: "budisantoso@mail.com",
-      phone: "62899 8888 7777",
+      phone: "(+62) 899 8888 7777",
       website: "budisantoso.personal",
     },
     skills: ["Wordpress Development", "Responsive Web Design"],
