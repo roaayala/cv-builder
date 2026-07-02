@@ -9,22 +9,40 @@ export default function TextInput({
   type = "text",
   onChange,
 }) {
-  const [name, setName] = useState(value);
+  const [isEdit, setIsEdit] = useState(false);
+
+  const handleEdit = (e) => {
+    e.preventDefault();
+    setIsEdit(true);
+  };
+
+  const handleSave = (e) => {
+    e.preventDefault();
+    setIsEdit(false);
+  };
+
   return (
     <div>
       <label htmlFor={id}>{label}</label>
-      <input
-        required={required}
-        id={id}
-        placeholder={placeholder}
-        name={id}
-        value={name}
-        type={type}
-        onChange={(e) => {
-          onChange(e);
-          setName(e.target.value);
-        }}
-      />
+      {isEdit ? (
+        <div>
+          <input
+            required={required}
+            id={id}
+            placeholder={placeholder}
+            name={id}
+            value={value}
+            type={type}
+            onChange={onChange}
+          />
+          <button onClick={handleSave}>Save</button>
+        </div>
+      ) : (
+        <div>
+          <span>{value}</span>
+          <button onClick={handleEdit}>Edit</button>
+        </div>
+      )}
     </div>
   );
 }

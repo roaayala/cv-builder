@@ -6,6 +6,12 @@ export default function SkillForm({ information }) {
   const [editIndex, setEditIndex] = useState(null);
   const [editValue, setEditValue] = useState("");
 
+  // handleEdit
+
+  // handleDelete
+
+  // handleSave
+
   return (
     <div>
       <h3>{skills.length > 1 ? "Skills" : "Skill"}</h3>
