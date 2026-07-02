@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Button from "../commons/Button";
 
 export default function TextInput({
   id,
@@ -35,12 +36,12 @@ export default function TextInput({
             type={type}
             onChange={onChange}
           />
-          <button onClick={handleSave}>Save</button>
+          <Button text="Save" onClick={handleSave} />
         </div>
       ) : (
         <div>
           <span>{value}</span>
-          <button onClick={handleEdit}>Edit</button>
+          <Button text="Edit" onClick={handleEdit} />
         </div>
       )}
     </div>
