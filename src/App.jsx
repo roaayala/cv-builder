@@ -14,7 +14,10 @@ export default function App() {
       phone: "(+62) 899 8888 7777",
       website: "budisantoso.personal",
     },
-    skills: ["Wordpress Development", "Responsive Web Design"],
+    skills: [
+      { id: crypto.randomUUID(), name: "Wordpress Development" },
+      { id: crypto.randomUUID(), name: "Responsive Web Design" },
+    ],
     education: [
       {
         institute: "Open University",
