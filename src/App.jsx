@@ -9,7 +9,7 @@ export default function App() {
   const handlePersonalInformation = {};
 
   return (
-    <div>
+    <div className="flex gap-4">
       <Form
         data={resume}
         personalInformationHandlers={handlePersonalInformation}

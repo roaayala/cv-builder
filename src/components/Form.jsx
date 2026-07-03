@@ -3,8 +3,8 @@ import PersonalInformationForm from "./forms/PersonalInformationForm";
 export default function Form({ data, personalInformationHandlers }) {
   const { personalInformation } = data;
   return (
-    <aside>
+    <form>
       <PersonalInformationForm data={personalInformation} />
-    </aside>
+    </form>
   );
 }
