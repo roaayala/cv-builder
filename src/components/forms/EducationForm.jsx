@@ -9,6 +9,7 @@ export default function EducationForm({ information, handlers }) {
   const [newEducation, setNewEducation] = useState(createNewEducation);
 
   const [editId, setEditId] = useState("");
+  const [updatedEducation, setUpdatedEducation] = useState({});
 
   const handleInputChange = (e) => {
     setNewEducation({
@@ -25,9 +26,22 @@ export default function EducationForm({ information, handlers }) {
         <p>No education added</p>
       ) : (
         <ul>
-          {education.map((ed) => (
-            <li key={ed.id}>{ed.institute}</li>
-          ))}
+          {editId && <></>}
+          {!editId &&
+            education.map((ed) => (
+              <li key={ed.id}>
+                <p>{ed.institute}</p>
+                <Button
+                  text={"Edit"}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setEditId(ed.id);
+                    setUpdatedEducation({ ...ed });
+                  }}
+                />
+                <Button text={"Delete"} />
+              </li>
+            ))}
         </ul>
       )}
 
