@@ -31,12 +31,14 @@ export default function App() {
       {
         id: crypto.randomUUID(),
         workplace: "Anti-Cancer Foundation",
+        description: "Description 1",
         start: "2020",
         end: "2021",
       },
       {
         id: crypto.randomUUID(),
         workplace: "Fintech Growth",
+        description: "Description 2",
         start: "2021",
         end: "",
       },
