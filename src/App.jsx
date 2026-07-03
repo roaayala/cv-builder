@@ -91,6 +91,12 @@ export default function App() {
     },
   };
 
+  const handleEducation = {
+    add: () => {},
+    edit: () => {},
+    delete: () => {},
+  };
+
   return (
     <div className="flex gap-4">
       <Form
@@ -98,6 +104,7 @@ export default function App() {
         onChange={handleChange}
         onContactChange={handleContactChange}
         skillHandlers={handleSkill}
+        educationHandlers={handleEducation}
       />
 
       <Resume information={resume} />
