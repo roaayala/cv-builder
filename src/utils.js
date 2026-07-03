@@ -1,6 +1,6 @@
-export const EXAMPLE = {
+export const EXAMPLE_RESUME = {
   personalInformation: {
-    name: "Budi Santoso",
+    fullName: "Budi Santoso",
     jobTitle: "Fullstack Web Developer",
     location: "Samarinda, Indonesia",
   },
