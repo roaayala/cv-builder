@@ -92,7 +92,14 @@ export default function App() {
   };
 
   const handleEducation = {
-    add: () => {},
+    add: (newEducationObject) => {
+      const newEducation = { ...newEducationObject };
+
+      setResume({
+        ...resume,
+        education: [...resume.education, newEducation],
+      });
+    },
     edit: () => {},
     delete: () => {},
   };
