@@ -11,7 +11,7 @@ export default function Form({
   educationHandlers,
 }) {
   return (
-    <form action="#" method="get" className="w-88">
+    <form action="#" method="get" className="w-88 flex flex-col gap-4">
       <PersonalInformationForm information={information} onChange={onChange} />
       <ContactForm information={information} onChange={onContactChange} />
       <SkillForm information={information} handlers={skillHandlers} />
