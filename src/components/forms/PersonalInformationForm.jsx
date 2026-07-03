@@ -1,7 +1,11 @@
 import { useState } from "react";
 import Button from "../commons/Button";
+import TextInput from "./personal-information/TextInput";
 
-export default function PersonalInformationForm({ data, handlers }) {
+export default function PersonalInformationForm({
+  data,
+  onPersonalInformationChange,
+}) {
   const { fullName, jobTitle, location } = data;
 
   const [isOpen, setIsOpen] = useState(false);
@@ -13,7 +17,7 @@ export default function PersonalInformationForm({ data, handlers }) {
 
   return (
     <section>
-      <header>
+      <header className="flex justify-between items-center">
         <h2>Personal Information</h2>
         {isOpen ? (
           <Button text={"Hide Detail"} onClick={handleOpen} />
@@ -21,7 +25,36 @@ export default function PersonalInformationForm({ data, handlers }) {
           <Button text={"Show Detail"} onClick={handleOpen} />
         )}
       </header>
-      {isOpen ? <main>Edit Screen</main> : <main>Normal Screen</main>}
+      {isOpen && (
+        <main>
+          <TextInput
+            id={"fullName"}
+            label={"Full Name"}
+            placeholder={"Full Name"}
+            required={true}
+            value={fullName}
+            onChange={onPersonalInformationChange}
+          />
+
+          <TextInput
+            id={"jobTitle"}
+            label={"Job Title"}
+            placeholder={"Job Title"}
+            required={true}
+            value={jobTitle}
+            onChange={onPersonalInformationChange}
+          />
+
+          <TextInput
+            id={"location"}
+            label={"Location"}
+            placeholder={"Location"}
+            required={true}
+            value={location}
+            onChange={onPersonalInformationChange}
+          />
+        </main>
+      )}
     </section>
   );
 }

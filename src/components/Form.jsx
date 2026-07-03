@@ -1,10 +1,13 @@
 import PersonalInformationForm from "./forms/PersonalInformationForm";
 
-export default function Form({ data, personalInformationHandlers }) {
+export default function Form({ data, onPersonalInformationChange }) {
   const { personalInformation } = data;
   return (
-    <form>
-      <PersonalInformationForm data={personalInformation} />
+    <form className="w-88">
+      <PersonalInformationForm
+        data={personalInformation}
+        onPersonalInformationChange={onPersonalInformationChange}
+      />
     </form>
   );
 }
