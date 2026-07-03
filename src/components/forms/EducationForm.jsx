@@ -10,6 +10,13 @@ export default function EducationForm({ information, handlers }) {
 
   const [editId, setEditId] = useState("");
 
+  const handleInputChange = (e) => {
+    setNewEducation({
+      ...newEducation,
+      [e.target.name]: e.target.value,
+    });
+  };
+
   return (
     <div>
       <h3>Education</h3>
@@ -33,12 +40,7 @@ export default function EducationForm({ information, handlers }) {
               type="text"
               placeholder="Institute"
               value={newEducation.institute}
-              onChange={(e) => {
-                setNewEducation({
-                  ...newEducation,
-                  [e.target.name]: e.target.value,
-                });
-              }}
+              onChange={handleInputChange}
             />
 
             <input
@@ -47,12 +49,7 @@ export default function EducationForm({ information, handlers }) {
               type="text"
               placeholder="Description"
               value={newEducation.description}
-              onChange={(e) => {
-                setNewEducation({
-                  ...newEducation,
-                  [e.target.name]: e.target.value,
-                });
-              }}
+              onChange={handleInputChange}
             />
 
             <input
@@ -61,12 +58,7 @@ export default function EducationForm({ information, handlers }) {
               type="text"
               placeholder="Start"
               value={newEducation.start}
-              onChange={(e) => {
-                setNewEducation({
-                  ...newEducation,
-                  [e.target.name]: e.target.value,
-                });
-              }}
+              onChange={handleInputChange}
             />
 
             <input
@@ -75,12 +67,7 @@ export default function EducationForm({ information, handlers }) {
               type="text"
               placeholder="End"
               value={newEducation.end}
-              onChange={(e) => {
-                setNewEducation({
-                  ...newEducation,
-                  [e.target.name]: e.target.value,
-                });
-              }}
+              onChange={handleInputChange}
             />
           </div>
           <div>
