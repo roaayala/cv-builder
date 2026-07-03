@@ -20,6 +20,7 @@ export default function App() {
     ],
     education: [
       {
+        id: crypto.randomUUID(),
         institute: "Open University",
         description: "Bachelor of Information System",
         start: "2016",
@@ -28,11 +29,13 @@ export default function App() {
     ],
     employment: [
       {
+        id: crypto.randomUUID(),
         workplace: "Anti-Cancer Foundation",
         start: "2020",
         end: "2021",
       },
       {
+        id: crypto.randomUUID(),
         workplace: "Fintech Growth",
         start: "2021",
         end: "",
