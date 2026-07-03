@@ -9,7 +9,7 @@ export default function Form({
   skillHandlers,
 }) {
   return (
-    <form action="#" method="get" className="w-3xs">
+    <form action="#" method="get" className="w-88">
       <PersonalInformationForm information={information} onChange={onChange} />
 
       <ContactForm information={information} onChange={onContactChange} />

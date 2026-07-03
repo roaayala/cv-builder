@@ -7,7 +7,6 @@ export default function SkillForm({ information, handlers }) {
   const [isAdd, setIsAdd] = useState(false);
   const [newSkill, setNewSkill] = useState("");
 
-  const [isEdit, setIsEdit] = useState(false);
   const [editId, setEditId] = useState("");
   const [editedSkill, setEditedSkill] = useState("");
 
@@ -21,8 +20,43 @@ export default function SkillForm({ information, handlers }) {
         <ul>
           {skills.map((skill) => (
             <li key={skill.id}>
-              {isEdit ? (
-                <></>
+              {editId === skill.id ? (
+                <>
+                  <div>
+                    <input
+                      id="editSKill"
+                      type="text"
+                      placeholder="Edit Skill"
+                      value={editedSkill}
+                      onChange={(e) => {
+                        setEditedSkill(e.target.value);
+                      }}
+                    />
+                  </div>
+
+                  <Button
+                    text="Cancel"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setEditId("");
+                    }}
+                  />
+
+                  <Button
+                    text="Save"
+                    onClick={(e) => {
+                      e.preventDefault();
+
+                      const skill = editedSkill.trim();
+
+                      if (skill === "") return;
+
+                      handlers.edit(editId, skill);
+                      setEditedSkill("");
+                      setEditId("");
+                    }}
+                  />
+                </>
               ) : (
                 <>
                   <p>{skill.name}</p>
@@ -30,7 +64,8 @@ export default function SkillForm({ information, handlers }) {
                     text="Edit"
                     onClick={(e) => {
                       e.preventDefault();
-                      setIsEdit(true);
+                      setEditedSkill(skill.name);
+                      setEditId(skill.id);
                     }}
                   />
                   <Button
@@ -50,7 +85,6 @@ export default function SkillForm({ information, handlers }) {
       {isAdd && (
         <div>
           <div>
-            <label htmlFor="newSkill">New Skill</label>
             <input
               id="newSkill"
               type="text"
