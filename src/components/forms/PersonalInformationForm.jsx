@@ -1,5 +1,5 @@
 import { useState } from "react";
-import TextInput from "./personal-information/TextInput";
+import TextInput from "./TextInput";
 import FormHeader from "./FormHeader";
 
 export default function PersonalInformationForm({

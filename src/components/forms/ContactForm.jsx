@@ -1,6 +1,6 @@
 import { useState } from "react";
 import FormHeader from "./FormHeader";
-import TextInput from "./personal-information/TextInput";
+import TextInput from "./TextInput";
 
 export default function ContactForm({ data, onContactChange }) {
   const { email, phone, website } = data;
