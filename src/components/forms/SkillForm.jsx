@@ -22,6 +22,8 @@ export default function SkillForm({ data, onSkillChange }) {
   const handleAdd = (e) => {
     e.preventDefault();
     setIsAdd(true);
+    setEditId("");
+    setEditedSkill("");
   };
 
   const handleSave = (e) => {
@@ -84,6 +86,8 @@ export default function SkillForm({ data, onSkillChange }) {
                           e.preventDefault();
                           setEditId(skill.id);
                           setEditedSkill(skill.name);
+                          setIsAdd(false);
+                          setNewSkill("");
                         }}
                         icon={<Edit />}
                       />
