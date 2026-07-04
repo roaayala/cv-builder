@@ -16,11 +16,22 @@ export default function App() {
     });
   };
 
+  const handleContactChange = (e) => {
+    setResume({
+      ...resume,
+      contact: {
+        ...resume.contact,
+        [e.target.name]: e.target.value,
+      },
+    });
+  };
+
   return (
     <div className="flex gap-4 h-screen">
       <Form
         data={resume}
         onPersonalInformationChange={handlePersonalInformationChange}
+        onContactChange={handleContactChange}
       />
       <Resume data={resume} />
     </div>
