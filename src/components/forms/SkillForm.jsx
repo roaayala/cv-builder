@@ -7,9 +7,12 @@ import createSkill from "../../models/SkillModel";
 
 export default function SkillForm({ data, onSkillChange }) {
   const [isOpen, setIsOpen] = useState(false);
+
   const [isAdd, setIsAdd] = useState(false);
   const [newSkill, setNewSkill] = useState("");
-  const [editId, setEdit] = useState("");
+
+  const [editId, setEditId] = useState("");
+  const [editedSkill, setEditedSkill] = useState("");
 
   const handleOpen = (e) => {
     e.preventDefault();
@@ -49,16 +52,50 @@ export default function SkillForm({ data, onSkillChange }) {
             ) : (
               data.map((skill) => (
                 <li key={skill.id} className="flex">
-                  <span>{skill.name}</span>
+                  {editId === skill.id ? (
+                    <>
+                      <input
+                        type="text"
+                        value={editedSkill}
+                        onChange={(e) => {
+                          setEditedSkill(e.target.value);
+                        }}
+                      />
 
-                  <Button onClick={(e) => e.preventDefault()} icon={<Edit />} />
-                  <Button
-                    onClick={(e) => {
-                      e.preventDefault();
-                      onSkillChange.delete(skill.id);
-                    }}
-                    icon={<Trash2 />}
-                  />
+                      <Button
+                        onClick={(e) => {
+                          e.preventDefault();
+
+                          if (editedSkill === "") return;
+
+                          onSkillChange.edit(skill.id, editedSkill);
+
+                          setEditedSkill("");
+                          setEditId("");
+                        }}
+                        icon={<Save />}
+                      />
+                    </>
+                  ) : (
+                    <>
+                      <span>{skill.name}</span>
+                      <Button
+                        onClick={(e) => {
+                          e.preventDefault();
+                          setEditId(skill.id);
+                          setEditedSkill(skill.name);
+                        }}
+                        icon={<Edit />}
+                      />
+                      <Button
+                        onClick={(e) => {
+                          e.preventDefault();
+                          onSkillChange.delete(skill.id);
+                        }}
+                        icon={<Trash2 />}
+                      />
+                    </>
+                  )}
                 </li>
               ))
             )}
@@ -75,12 +112,14 @@ export default function SkillForm({ data, onSkillChange }) {
           )}
 
           <div>
-            {isAdd ? (
+            {isAdd && (
               <>
                 <Button icon={<X />} text={"Cancel"} onClick={handleCancel} />
                 <Button icon={<Save />} text={"Save"} onClick={handleSave} />
               </>
-            ) : (
+            )}
+
+            {!isAdd && !editId && (
               <Button icon={<Plus />} text={"Add Skill"} onClick={handleAdd} />
             )}
           </div>

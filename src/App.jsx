@@ -38,6 +38,20 @@ export default function App() {
       setResume({ ...resume, skill: [...resume.skill, newSkill] });
     },
 
+    edit: (id, editedSkill) => {
+      const updateSkill = resume.skill.map((s) => {
+        if (s.id === id) {
+          return { ...s, name: editedSkill };
+        }
+        return s;
+      });
+
+      setResume({
+        ...resume,
+        skill: [...updateSkill],
+      });
+    },
+
     delete: (id) => {
       const filteredSkill = resume.skill.filter((s) => s.id !== id);
       setResume({
