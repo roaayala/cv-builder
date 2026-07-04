@@ -1,6 +1,8 @@
 import { useState } from "react";
 import Button from "../commons/Button";
 import TextInput from "./personal-information/TextInput";
+import { ChevronUp, ChevronDown } from "lucide-react";
+import FormHeader from "./FormHeader";
 
 export default function PersonalInformationForm({
   data,
@@ -17,14 +19,12 @@ export default function PersonalInformationForm({
 
   return (
     <section>
-      <header className="flex justify-between items-center">
-        <h2>Personal Information</h2>
-        {isOpen ? (
-          <Button text={"Hide Detail"} onClick={handleOpen} />
-        ) : (
-          <Button text={"Show Detail"} onClick={handleOpen} />
-        )}
-      </header>
+      <FormHeader
+        sectionTitle={"Personal Information"}
+        isOpen={isOpen}
+        onOpen={handleOpen}
+      />
+
       {isOpen && (
         <main>
           <TextInput
