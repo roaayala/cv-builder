@@ -17,7 +17,7 @@ export default function App() {
   };
 
   return (
-    <div className="flex gap-4">
+    <div className="flex gap-4 h-screen">
       <Form
         data={resume}
         onPersonalInformationChange={handlePersonalInformationChange}

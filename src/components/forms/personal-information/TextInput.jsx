@@ -8,9 +8,12 @@ export default function TextInput({
   onChange,
 }) {
   return (
-    <div>
-      <label htmlFor={id}>{label}</label>
+    <div className="flex flex-col">
+      <label htmlFor={id} className="">
+        {label}
+      </label>
       <input
+        className=""
         required={required}
         id={id}
         placeholder={placeholder}

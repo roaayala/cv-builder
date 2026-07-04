@@ -1,7 +1,5 @@
 import { useState } from "react";
-import Button from "../commons/Button";
 import TextInput from "./personal-information/TextInput";
-import { ChevronUp, ChevronDown } from "lucide-react";
 import FormHeader from "./FormHeader";
 
 export default function PersonalInformationForm({
@@ -18,7 +16,7 @@ export default function PersonalInformationForm({
   };
 
   return (
-    <section>
+    <section className="">
       <FormHeader
         sectionTitle={"Personal Information"}
         isOpen={isOpen}
@@ -26,7 +24,7 @@ export default function PersonalInformationForm({
       />
 
       {isOpen && (
-        <main>
+        <main className="">
           <TextInput
             id={"fullName"}
             label={"Full Name"}
