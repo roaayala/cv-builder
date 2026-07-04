@@ -25,7 +25,7 @@ export const EXAMPLE_RESUME = {
     {
       id: crypto.randomUUID(),
       institute: "Open University",
-      description: "Bachelor of Information System",
+      degree: "Bachelor of Information System",
       start: "2016",
       end: "2020",
     },
