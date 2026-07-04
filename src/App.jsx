@@ -33,6 +33,16 @@ export default function App() {
     });
   };
 
+  const handleSkillChange = {
+    delete: (id) => {
+      const filteredSkill = resume.skill.filter((s) => s.id !== id);
+      setResume({
+        ...resume,
+        skill: filteredSkill,
+      });
+    },
+  };
+
   return (
     <div className="flex gap-4 h-screen">
       <Form
@@ -40,6 +50,7 @@ export default function App() {
         onPersonalInformationChange={handlePersonalInformationChange}
         onContactChange={handleContactChange}
         onProfessionalSummaryChange={handleProfessionalSummaryChange}
+        onSkillChange={handleSkillChange}
       />
       <Resume data={resume} />
     </div>
