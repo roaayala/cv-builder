@@ -1,7 +1,7 @@
 export default function ProfessionalSummary({ data }) {
   return (
     <section>
-      <h3>Professional Summary</h3>
+      <h2>Professional Summary</h2>
       <p>{data}</p>
     </section>
   );

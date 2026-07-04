@@ -34,14 +34,14 @@ export const EXAMPLE_RESUME = {
     {
       id: crypto.randomUUID(),
       workplace: "Anti-Cancer Foundation",
-      description: "Description 1",
+      role: "Front-end Developer",
       start: "2020",
       end: "2021",
     },
     {
       id: crypto.randomUUID(),
       workplace: "Fintech Growth",
-      description: "Description 2",
+      role: "Fullstack Engineer",
       start: "2021",
       end: "",
     },
