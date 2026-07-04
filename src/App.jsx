@@ -34,6 +34,10 @@ export default function App() {
   };
 
   const handleSkillChange = {
+    add: (newSkill) => {
+      setResume({ ...resume, skill: [...resume.skill, newSkill] });
+    },
+
     delete: (id) => {
       const filteredSkill = resume.skill.filter((s) => s.id !== id);
       setResume({

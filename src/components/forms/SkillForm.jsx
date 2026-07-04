@@ -3,6 +3,7 @@ import FormHeader from "./FormHeader";
 import Button from "../commons/Button";
 import TextInput from "./TextInput";
 import { Plus, Save, Edit, Trash2, X } from "lucide-react";
+import createSkill from "../../models/SkillModel";
 
 export default function SkillForm({ data, onSkillChange }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -25,7 +26,7 @@ export default function SkillForm({ data, onSkillChange }) {
 
     if (newSkill === "") return;
 
-    onSkillChange.add();
+    onSkillChange.add(createSkill({ name: newSkill }));
 
     setNewSkill("");
     setIsAdd(false);
