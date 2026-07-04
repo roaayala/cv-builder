@@ -26,12 +26,20 @@ export default function App() {
     });
   };
 
+  const handleProfessionalSummaryChange = (e) => {
+    setResume({
+      ...resume,
+      professionalSummary: e.target.value,
+    });
+  };
+
   return (
     <div className="flex gap-4 h-screen">
       <Form
         data={resume}
         onPersonalInformationChange={handlePersonalInformationChange}
         onContactChange={handleContactChange}
+        onProfessionalSummaryChange={handleProfessionalSummaryChange}
       />
       <Resume data={resume} />
     </div>
