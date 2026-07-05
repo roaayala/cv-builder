@@ -13,7 +13,7 @@ export default function EducationForm({ data, onEducationChange }) {
   const [newEducation, setNewEducation] = useState(createEducation);
 
   const [editId, setEditId] = useState("");
-  const [editedEducation, setEditedEducation] = useState("");
+  const [editedEducation, setEditedEducation] = useState(createEducation);
 
   const handleOpen = (e) => {
     e.preventDefault();
@@ -47,6 +47,7 @@ export default function EducationForm({ data, onEducationChange }) {
 
   const handleEdit = (e, id) => {
     e.preventDefault();
+    setEditId(id);
   };
 
   const handleSaveEdit = (e) => {
@@ -76,12 +77,17 @@ export default function EducationForm({ data, onEducationChange }) {
                   {editId === education.id ? (
                     <>
                       <input type="text" />
-                      <Button icon={<Save />} onClick={handleSaveEdit} />
+                      <Button icon={<Save />} onClick={(e) => {}} />
                     </>
                   ) : (
                     <>
                       <p>{education.institute}</p>
-                      <Button icon={<Edit />} onClick={handleEdit} />
+                      <Button
+                        icon={<Edit />}
+                        onClick={(e) => {
+                          handleEdit(e, education.id);
+                        }}
+                      />
                       <Button icon={<Trash2 />} onClick={handleDelete} />
                     </>
                   )}
