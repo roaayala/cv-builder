@@ -65,6 +65,11 @@ export default function App() {
     add: (newEducation) => {
       setResume({ ...resume, education: [...resume.education, newEducation] });
     },
+
+    delete: (id) => {
+      const filteredEducation = resume.education.filter((e) => e.id !== id);
+      setResume({ ...resume, education: filteredEducation });
+    },
   };
 
   return (

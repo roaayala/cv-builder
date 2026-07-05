@@ -54,8 +54,9 @@ export default function EducationForm({ data, onEducationChange }) {
     e.preventDefault();
   };
 
-  const handleDelete = (e) => {
+  const handleDelete = (e, id) => {
     e.preventDefault();
+    onEducationChange.delete(id);
   };
 
   return (
@@ -88,7 +89,12 @@ export default function EducationForm({ data, onEducationChange }) {
                           handleEdit(e, education.id);
                         }}
                       />
-                      <Button icon={<Trash2 />} onClick={handleDelete} />
+                      <Button
+                        icon={<Trash2 />}
+                        onClick={(e) => {
+                          handleDelete(e, education.id);
+                        }}
+                      />
                     </>
                   )}
                 </li>
