@@ -1,5 +1,5 @@
 import ContactForm from "./forms/ContactForm";
-import EmployementForm from "./forms/EmploymentForm";
+import EducationForm from "./forms/EducationForm";
 import PersonalInformationForm from "./forms/PersonalInformationForm";
 import ProfessionalSummaryForm from "./forms/ProfessionalSummaryForm";
 import SkillForm from "./forms/SkillForm";
@@ -10,6 +10,7 @@ export default function Form({
   onContactChange,
   onProfessionalSummaryChange,
   onSkillChange,
+  onEducationChange,
 }) {
   const {
     personalInformation,
@@ -35,7 +36,7 @@ export default function Form({
 
       <SkillForm data={skill} onSkillChange={onSkillChange} />
 
-      <EmployementForm data={education} />
+      <EducationForm data={education} onEducationChange={onEducationChange} />
     </form>
   );
 }

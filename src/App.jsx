@@ -61,6 +61,12 @@ export default function App() {
     },
   };
 
+  const handleEducationChange = {
+    add: (newEducation) => {
+      setResume({ ...resume, education: [...resume.education, newEducation] });
+    },
+  };
+
   return (
     <div className="flex gap-4 h-screen">
       <Form
@@ -69,6 +75,7 @@ export default function App() {
         onContactChange={handleContactChange}
         onProfessionalSummaryChange={handleProfessionalSummaryChange}
         onSkillChange={handleSkillChange}
+        onEducationChange={handleEducationChange}
       />
       <Resume data={resume} />
     </div>

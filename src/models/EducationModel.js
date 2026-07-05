@@ -1,8 +1,8 @@
-export default function createNewEducation({
+export default function createEducation({
   institute = "",
-  description = "",
+  degree = "",
   start = "",
   end = "",
 } = {}) {
-  return { id: crypto.randomUUID(), institute, description, start, end };
+  return { id: crypto.randomUUID(), institute, degree, start, end };
 }
