@@ -1,4 +1,5 @@
 import ContactForm from "./forms/ContactForm";
+import EmployementForm from "./forms/EmploymentForm";
 import PersonalInformationForm from "./forms/PersonalInformationForm";
 import ProfessionalSummaryForm from "./forms/ProfessionalSummaryForm";
 import SkillForm from "./forms/SkillForm";
@@ -33,6 +34,8 @@ export default function Form({
       />
 
       <SkillForm data={skill} onSkillChange={onSkillChange} />
+
+      <EmployementForm data={education} />
     </form>
   );
 }
