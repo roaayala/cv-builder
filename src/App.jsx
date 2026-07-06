@@ -1,120 +1,88 @@
 import { useState } from "react";
 import Form from "./components/Form";
 import Resume from "./components/Resume";
+import { EXAMPLE_RESUME } from "./utils";
 
 export default function App() {
-  const [resume, setResume] = useState({
-    name: "Budi Santoso",
-    jobTitle: "Fullstack Web Developer",
-    address: "Suryanata 22, Samarinda, Indonesia",
-    profile:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nunc leo, posuere eget odio et, pulvinar posuere ligula. Praesent cursus massa in nisl condimentum, eu faucibus turpis fringilla. Morbi tincidunt cursus ipsum non finibus. Quisque porta, metus et faucibus condimentum, neque orci interdum ipsum, nec luctus tellus nunc in tortor. Sed malesuada, lorem eu placerat tristique, quam est sollicitudin massa, sed semper ex magna sed ligula. Proin at nisi lorem.",
-    contact: {
-      email: "budisantoso@mail.com",
-      phone: "(+62) 899 8888 7777",
-      website: "budisantoso.personal",
-    },
-    skills: [
-      { id: crypto.randomUUID(), name: "Wordpress Development" },
-      { id: crypto.randomUUID(), name: "Responsive Web Design" },
-    ],
-    education: [
-      {
-        id: crypto.randomUUID(),
-        institute: "Open University",
-        description: "Bachelor of Information System",
-        start: "2016",
-        end: "2020",
-      },
-    ],
-    employment: [
-      {
-        id: crypto.randomUUID(),
-        workplace: "Anti-Cancer Foundation",
-        description: "Description 1",
-        start: "2020",
-        end: "2021",
-      },
-      {
-        id: crypto.randomUUID(),
-        workplace: "Fintech Growth",
-        description: "Description 2",
-        start: "2021",
-        end: "",
-      },
-    ],
-  });
+  const [resume, setResume] = useState(EXAMPLE_RESUME);
 
-  const handleChange = (e) => {
-    const editedResume = { ...resume, [e.target.name]: e.target.value };
-
-    setResume(editedResume);
+  const handlePersonalInformationChange = (e) => {
+    setResume({
+      ...resume,
+      personalInformation: {
+        ...resume.personalInformation,
+        [e.target.name]: e.target.value,
+      },
+    });
   };
 
   const handleContactChange = (e) => {
-    const editedResume = {
+    setResume({
       ...resume,
-      contact: { ...resume.contact, [e.target.name]: e.target.value },
-    };
-
-    setResume(editedResume);
+      contact: {
+        ...resume.contact,
+        [e.target.name]: e.target.value,
+      },
+    });
   };
 
-  const handleSkill = {
-    add: (name) => {
-      const newSkill = { id: crypto.randomUUID(), name };
+  const handleProfessionalSummaryChange = (e) => {
+    setResume({
+      ...resume,
+      professionalSummary: e.target.value,
+    });
+  };
 
-      setResume({
-        ...resume,
-        skills: [...resume.skills, newSkill],
-      });
+  const handleSkillChange = {
+    add: (newSkill) => {
+      setResume({ ...resume, skill: [...resume.skill, newSkill] });
     },
 
-    edit: (id, newName) => {
-      const updatedSkill = resume.skills.map((skill) =>
-        skill.id === id ? { ...skill, name: newName } : skill,
-      );
+    edit: (id, editedSkill) => {
+      const updateSkill = resume.skill.map((s) => {
+        if (s.id === id) {
+          return { ...s, name: editedSkill };
+        }
+        return s;
+      });
 
       setResume({
         ...resume,
-        skills: updatedSkill,
+        skill: [...updateSkill],
       });
     },
 
     delete: (id) => {
-      const filteredSkill = resume.skills.filter((skill) => skill.id !== id);
-
+      const filteredSkill = resume.skill.filter((s) => s.id !== id);
       setResume({
         ...resume,
-        skills: filteredSkill,
+        skill: filteredSkill,
       });
     },
   };
 
-  const handleEducation = {
-    add: (newEducationObject) => {
-      const newEducation = { ...newEducationObject };
-
-      setResume({
-        ...resume,
-        education: [...resume.education, newEducation],
-      });
+  const handleEducationChange = {
+    add: (newEducation) => {
+      setResume({ ...resume, education: [...resume.education, newEducation] });
     },
-    edit: () => {},
-    delete: () => {},
+
+    delete: (id) => {
+      const filteredEducation = resume.education.filter((e) => e.id !== id);
+      setResume({ ...resume, education: filteredEducation });
+    },
   };
 
   return (
-    <div className="flex gap-4">
+    <div className="flex gap-4 h-screen">
       <Form
-        information={resume}
-        onChange={handleChange}
+        data={resume}
+        onPersonalInformationChange={handlePersonalInformationChange}
         onContactChange={handleContactChange}
-        skillHandlers={handleSkill}
-        educationHandlers={handleEducation}
+        onProfessionalSummaryChange={handleProfessionalSummaryChange}
+        onSkillChange={handleSkillChange}
+        onEducationChange={handleEducationChange}
       />
-
-      <Resume information={resume} />
+      <Resume data={resume} />
     </div>
   );
 }

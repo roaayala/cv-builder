@@ -1,10 +1,11 @@
-export default function Button({ text, variant = "", onClick }) {
+export default function Button({ text, icon, onClick }) {
   return (
     <button
-      className="text-white bg-blue-500 border border-blue-500 rounded-lg py-0.5 px-2"
+      className="cursor-pointer flex items-center gap-2"
       onClick={onClick}
     >
-      {text}
+      {icon && <span>{icon}</span>}
+      {text && <span>{text}</span>}
     </button>
   );
 }

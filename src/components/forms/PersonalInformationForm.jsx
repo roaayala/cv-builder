@@ -1,46 +1,58 @@
-import TextareaInput from "./TextareaInput";
+import { useState } from "react";
 import TextInput from "./TextInput";
+import FormHeader from "./FormHeader";
 
-export default function PersonalInformationForm({ information, onChange }) {
-  const { name, jobTitle, profile, address } = information;
+export default function PersonalInformationForm({
+  data,
+  onPersonalInformationChange,
+}) {
+  const { fullName, jobTitle, location } = data;
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleOpen = (e) => {
+    e.preventDefault();
+    setIsOpen(!isOpen);
+  };
+
   return (
-    <div>
-      <h3>Personal Information</h3>
-      <TextInput
-        label="Name"
-        id="name"
-        placeholder="Name"
-        required={true}
-        value={name}
-        onChange={onChange}
+    <section className="">
+      <FormHeader
+        sectionTitle={"Personal Information"}
+        isOpen={isOpen}
+        onOpen={handleOpen}
       />
 
-      <TextInput
-        label="Job Title"
-        id="jobTitle"
-        placeholder="Job Title"
-        required={true}
-        value={jobTitle}
-        onChange={onChange}
-      />
+      {isOpen && (
+        <main className="">
+          <TextInput
+            id={"fullName"}
+            label={"Full Name"}
+            placeholder={"Full Name"}
+            required={true}
+            value={fullName}
+            onChange={onPersonalInformationChange}
+          />
 
-      <TextareaInput
-        required={true}
-        label="Profile"
-        id="profile"
-        placeholder="Profile"
-        value={profile}
-        onChange={onChange}
-      />
+          <TextInput
+            id={"jobTitle"}
+            label={"Job Title"}
+            placeholder={"Job Title"}
+            required={true}
+            value={jobTitle}
+            onChange={onPersonalInformationChange}
+          />
 
-      <TextareaInput
-        required={true}
-        label="Address"
-        id="address"
-        placeholder="Address"
-        value={address}
-        onChange={onChange}
-      />
-    </div>
+          <TextInput
+            id={"location"}
+            label={"Location"}
+            placeholder={"Location"}
+            required={true}
+            value={location}
+            onChange={onPersonalInformationChange}
+          />
+        </main>
+      )}
+    </section>
   );
 }

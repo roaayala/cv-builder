@@ -1,19 +1,19 @@
-export default function Education({ information }) {
-  const { education } = information;
+export default function Education({ data }) {
   return (
-    <div>
+    <section>
       <h2>Education</h2>
       <ul>
-        {education.map((ed) => (
-          <li key={ed.id}>
-            <h3>{ed.institute}</h3>
+        {data.map((education) => (
+          <li key={education.id}>
+            <h3>
+              <span>{education.degree}</span> at {education.institute}
+            </h3>
             <p>
-              <span>{ed.start}</span>-<span>{ed.end ? ed.end : "Now"}</span>
+              <span>{education.start}</span> - <span>{education.end}</span>
             </p>
-            <p>{ed.description}</p>
           </li>
         ))}
       </ul>
-    </div>
+    </section>
   );
 }

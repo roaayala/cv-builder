@@ -1,19 +1,19 @@
-export default function Employment({ information }) {
-  const { employment } = information;
+export default function Employment({ data }) {
   return (
-    <div>
-      <h2>Employments</h2>
+    <section>
+      <h2>Employment</h2>
       <ul>
-        {employment.map((emp) => (
-          <li key={emp.id}>
-            <h3>{emp.workplace}</h3>
+        {data.map((employment) => (
+          <li key={employment.id}>
+            <h3>
+              <span>{employment.role}</span> at {employment.workspace}
+            </h3>
             <p>
-              <span>{emp.start}</span>-<span>{emp.end ? emp.end : "Now"}</span>
+              <span>{employment.start}</span> - <span>{employment.end}</span>
             </p>
-            <p>{emp.description}</p>
           </li>
         ))}
       </ul>
-    </div>
+    </section>
   );
 }

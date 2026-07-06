@@ -1,37 +1,55 @@
+import { useState } from "react";
+import FormHeader from "./FormHeader";
 import TextInput from "./TextInput";
 
-export default function ContactForm({ information, onChange }) {
-  const { email, phone, website } = information.contact;
+export default function ContactForm({ data, onContactChange }) {
+  const { email, phone, website } = data;
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleOpen = (e) => {
+    e.preventDefault();
+    setIsOpen(!isOpen);
+  };
+
   return (
-    <div>
-      <h3>Contact</h3>
-      <TextInput
-        label="Email"
-        id="email"
-        placeholder="Email"
-        type="email"
-        required={true}
-        value={email}
-        onChange={onChange}
+    <section>
+      <FormHeader
+        sectionTitle={"Contact"}
+        isOpen={isOpen}
+        onOpen={handleOpen}
       />
 
-      <TextInput
-        label="Phone"
-        id="phone"
-        placeholder="Phone"
-        required={true}
-        value={phone}
-        onChange={onChange}
-      />
+      {isOpen && (
+        <main className="">
+          <TextInput
+            id={"email"}
+            label={"Email"}
+            placeholder={"Email"}
+            required={true}
+            value={email}
+            onChange={onContactChange}
+          />
 
-      <TextInput
-        label="Website"
-        id="website"
-        placeholder="Website"
-        required={false}
-        value={website}
-        onChange={onChange}
-      />
-    </div>
+          <TextInput
+            id={"phone"}
+            label={"Phone"}
+            placeholder={"Phone"}
+            required={true}
+            value={phone}
+            onChange={onContactChange}
+          />
+
+          <TextInput
+            id={"website"}
+            label={"Website"}
+            placeholder={"Website"}
+            required={true}
+            value={website}
+            onChange={onContactChange}
+          />
+        </main>
+      )}
+    </section>
   );
 }

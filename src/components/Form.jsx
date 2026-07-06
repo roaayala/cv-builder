@@ -1,21 +1,42 @@
 import ContactForm from "./forms/ContactForm";
 import EducationForm from "./forms/EducationForm";
 import PersonalInformationForm from "./forms/PersonalInformationForm";
+import ProfessionalSummaryForm from "./forms/ProfessionalSummaryForm";
 import SkillForm from "./forms/SkillForm";
 
 export default function Form({
-  information,
-  onChange,
+  data,
+  onPersonalInformationChange,
   onContactChange,
-  skillHandlers,
-  educationHandlers,
+  onProfessionalSummaryChange,
+  onSkillChange,
+  onEducationChange,
 }) {
+  const {
+    personalInformation,
+    contact,
+    professionalSummary,
+    skill,
+    education,
+    emplyoment,
+  } = data;
   return (
-    <form action="#" method="get" className="w-88 flex flex-col gap-4">
-      <PersonalInformationForm information={information} onChange={onChange} />
-      <ContactForm information={information} onChange={onContactChange} />
-      <SkillForm information={information} handlers={skillHandlers} />
-      <EducationForm information={information} handlers={educationHandlers} />
+    <form className="w-lg flex flex-col gap-4 p-4">
+      <PersonalInformationForm
+        data={personalInformation}
+        onPersonalInformationChange={onPersonalInformationChange}
+      />
+
+      <ContactForm data={contact} onContactChange={onContactChange} />
+
+      <ProfessionalSummaryForm
+        data={professionalSummary}
+        onProfessionalSummaryChange={onProfessionalSummaryChange}
+      />
+
+      <SkillForm data={skill} onSkillChange={onSkillChange} />
+
+      <EducationForm data={education} onEducationChange={onEducationChange} />
     </form>
   );
 }

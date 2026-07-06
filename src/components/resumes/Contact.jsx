@@ -1,14 +1,11 @@
-export default function Contact({ information }) {
-  const { email, phone, website } = information.contact;
-
+export default function Contact({ data }) {
+  const { email, phone, website } = data;
   return (
-    <div>
+    <section>
       <h2>Contact</h2>
-      <ul>
-        <li>{email}</li>
-        <li>{phone}</li>
-        <li>{website}</li>
-      </ul>
-    </div>
+      <p>{email}</p>
+      <p>{phone}</p>
+      <p>{website}</p>
+    </section>
   );
 }
