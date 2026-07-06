@@ -1,5 +1,5 @@
 import { ChevronUp, ChevronDown } from "lucide-react";
-import Button from "../commons/Button";
+import Button from "./Button";
 
 export default function FormHeader({ sectionTitle, isOpen, onOpen }) {
   return (

@@ -1,6 +1,7 @@
 import { useState } from "react";
-import TextInput from "./TextInput";
-import FormHeader from "./FormHeader";
+import TextInput from "../../../components/ui/TextInput";
+import FormSection from "../../../components/ui/FormSection";
+import FormHeader from "../../../components/ui/FormHeader";
 
 export default function PersonalInformationForm({ data, handlers }) {
   const { fullName, jobTitle, location } = data;
@@ -13,7 +14,7 @@ export default function PersonalInformationForm({ data, handlers }) {
   };
 
   return (
-    <section className="">
+    <FormSection>
       <FormHeader
         sectionTitle={"Personal Information"}
         isOpen={isOpen}
@@ -21,7 +22,7 @@ export default function PersonalInformationForm({ data, handlers }) {
       />
 
       {isOpen && (
-        <main className="">
+        <main>
           <TextInput
             id={"fullName"}
             label={"Full Name"}
@@ -56,6 +57,6 @@ export default function PersonalInformationForm({ data, handlers }) {
           />
         </main>
       )}
-    </section>
+    </FormSection>
   );
 }
