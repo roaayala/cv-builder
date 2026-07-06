@@ -3,11 +3,11 @@ import FormHeader from "./FormHeader";
 import Button from "../commons/Button";
 import TextInput from "./TextInput";
 import { Plus, Save, Edit, Trash2, X } from "lucide-react";
-import PreviewList from "../commons/PreviewList";
+
 import createEducation from "../../models/EducationModel";
 import TextInputGroup from "../commons/TextInputGroup";
 
-export default function EducationForm({ data, onEducationChange }) {
+export default function EducationForm({ data, handlers }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const [isAdd, setIsAdd] = useState(false);
@@ -33,7 +33,7 @@ export default function EducationForm({ data, onEducationChange }) {
 
     if (newEducation.institute === "" || newEducation.degree === "") return;
 
-    onEducationChange.add(newEducation);
+    handlers.education.add(newEducation);
 
     setNewEducation(createEducation());
     setIsAdd(false);
@@ -64,7 +64,7 @@ export default function EducationForm({ data, onEducationChange }) {
 
   const handleDelete = (e, id) => {
     e.preventDefault();
-    onEducationChange.delete(id);
+    handlers.education.delete(id);
   };
 
   return (

@@ -2,10 +2,7 @@ import { useState } from "react";
 import TextInput from "./TextInput";
 import FormHeader from "./FormHeader";
 
-export default function PersonalInformationForm({
-  data,
-  onPersonalInformationChange,
-}) {
+export default function PersonalInformationForm({ data, handlers }) {
   const { fullName, jobTitle, location } = data;
 
   const [isOpen, setIsOpen] = useState(false);
@@ -31,7 +28,9 @@ export default function PersonalInformationForm({
             placeholder={"Full Name"}
             required={true}
             value={fullName}
-            onChange={onPersonalInformationChange}
+            onChange={(e) => {
+              handlers.personalInfo(e);
+            }}
           />
 
           <TextInput
@@ -40,7 +39,9 @@ export default function PersonalInformationForm({
             placeholder={"Job Title"}
             required={true}
             value={jobTitle}
-            onChange={onPersonalInformationChange}
+            onChange={(e) => {
+              handlers.personalInfo(e);
+            }}
           />
 
           <TextInput
@@ -49,7 +50,9 @@ export default function PersonalInformationForm({
             placeholder={"Location"}
             required={true}
             value={location}
-            onChange={onPersonalInformationChange}
+            onChange={(e) => {
+              handlers.personalInfo(e);
+            }}
           />
         </main>
       )}

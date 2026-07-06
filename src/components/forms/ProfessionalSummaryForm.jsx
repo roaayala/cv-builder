@@ -1,10 +1,7 @@
 import { useState } from "react";
 import FormHeader from "./FormHeader";
 
-export default function ProfessionalSummaryForm({
-  data,
-  onProfessionalSummaryChange,
-}) {
+export default function ProfessionalSummaryForm({ data, handlers }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleOpen = (e) => {
@@ -24,7 +21,9 @@ export default function ProfessionalSummaryForm({
           <textarea
             name="professionalSummary"
             placeholder="Professional Summary"
-            onChange={onProfessionalSummaryChange}
+            onChange={(e) => {
+              handlers.professionalSummary(e);
+            }}
             value={data}
             required
           />

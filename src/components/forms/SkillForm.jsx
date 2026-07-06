@@ -4,9 +4,8 @@ import Button from "../commons/Button";
 import TextInput from "./TextInput";
 import { Plus, Save, Edit, Trash2, X } from "lucide-react";
 import createSkill from "../../models/SkillModel";
-import PreviewList from "../commons/PreviewList";
 
-export default function SkillForm({ data, onSkillChange }) {
+export default function SkillForm({ data, handlers }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const [isAdd, setIsAdd] = useState(false);
@@ -32,7 +31,7 @@ export default function SkillForm({ data, onSkillChange }) {
 
     if (newSkill === "") return;
 
-    onSkillChange.add(createSkill({ name: newSkill }));
+    handlers.skill.add(createSkill({ name: newSkill }));
 
     setNewSkill("");
     setIsAdd(false);
@@ -71,7 +70,7 @@ export default function SkillForm({ data, onSkillChange }) {
 
                           if (editedSkill === "") return;
 
-                          onSkillChange.edit(skill.id, editedSkill);
+                          handlers.skill.edit(skill.id, editedSkill);
 
                           setEditedSkill("");
                           setEditId("");
@@ -95,7 +94,7 @@ export default function SkillForm({ data, onSkillChange }) {
                       <Button
                         onClick={(e) => {
                           e.preventDefault();
-                          onSkillChange.delete(skill.id);
+                          handlers.skill.delete(skill.id);
                         }}
                         icon={<Trash2 />}
                       />

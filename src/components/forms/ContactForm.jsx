@@ -2,7 +2,7 @@ import { useState } from "react";
 import FormHeader from "./FormHeader";
 import TextInput from "./TextInput";
 
-export default function ContactForm({ data, onContactChange }) {
+export default function ContactForm({ data, handlers }) {
   const { email, phone, website } = data;
 
   const [isOpen, setIsOpen] = useState(false);
@@ -28,7 +28,9 @@ export default function ContactForm({ data, onContactChange }) {
             placeholder={"Email"}
             required={true}
             value={email}
-            onChange={onContactChange}
+            onChange={(e) => {
+              handlers.contact(e);
+            }}
           />
 
           <TextInput
@@ -37,7 +39,9 @@ export default function ContactForm({ data, onContactChange }) {
             placeholder={"Phone"}
             required={true}
             value={phone}
-            onChange={onContactChange}
+            onChange={(e) => {
+              handlers.contact(e);
+            }}
           />
 
           <TextInput
@@ -46,7 +50,9 @@ export default function ContactForm({ data, onContactChange }) {
             placeholder={"Website"}
             required={true}
             value={website}
-            onChange={onContactChange}
+            onChange={(e) => {
+              handlers.contact(e);
+            }}
           />
         </main>
       )}
