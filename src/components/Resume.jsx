@@ -1,9 +1,11 @@
-import Contact from "./resumes/Contact";
-import Education from "./resumes/Education";
-import Employment from "./resumes/Employment";
-import PersonalInformation from "./resumes/PersonalInformation";
-import ProfessionalSummary from "./resumes/ProfessionalSummary";
-import Skill from "./resumes/Skill";
+import {
+  PersonalInformation,
+  Contact,
+  ProfessionalSummary,
+  Skill,
+  Education,
+  Employment,
+} from "../features/resume-preview";
 
 export default function Resume({ data }) {
   const {
