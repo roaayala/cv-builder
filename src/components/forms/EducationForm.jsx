@@ -5,6 +5,7 @@ import TextInput from "./TextInput";
 import { Plus, Save, Edit, Trash2, X } from "lucide-react";
 import PreviewList from "../commons/PreviewList";
 import createEducation from "../../models/EducationModel";
+import TextInputGroup from "../commons/TextInputGroup";
 
 export default function EducationForm({ data, onEducationChange }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -54,6 +55,13 @@ export default function EducationForm({ data, onEducationChange }) {
     e.preventDefault();
   };
 
+  const handleCancelEdit = (e) => {
+    e.preventDefault();
+
+    setNewEducation(createEducation());
+    setEditId("");
+  };
+
   const handleDelete = (e, id) => {
     e.preventDefault();
     onEducationChange.delete(id);
@@ -77,8 +85,21 @@ export default function EducationForm({ data, onEducationChange }) {
                 <li key={education.id}>
                   {editId === education.id ? (
                     <>
-                      <input type="text" />
-                      <Button icon={<Save />} onClick={(e) => {}} />
+                      <TextInputGroup
+                        groupTitle={"Edit Education"}
+                      ></TextInputGroup>
+                      <Button
+                        icon={<Save />}
+                        text={"Save Edit"}
+                        onClick={(e) => {
+                          handleSaveEdit(e);
+                        }}
+                      />
+                      <Button
+                        icon={<X />}
+                        text={"Cancel Edit"}
+                        onClick={handleCancelEdit}
+                      />
                     </>
                   ) : (
                     <>
@@ -104,8 +125,7 @@ export default function EducationForm({ data, onEducationChange }) {
 
           <div>
             {isAdd && (
-              <div>
-                <p>New Education</p>
+              <TextInputGroup groupTitle={"New Education"}>
                 <TextInput
                   id={"institute"}
                   label={"Institute"}
@@ -161,7 +181,7 @@ export default function EducationForm({ data, onEducationChange }) {
                     });
                   }}
                 />
-              </div>
+              </TextInputGroup>
             )}
 
             {isAdd && (
