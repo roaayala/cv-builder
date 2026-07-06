@@ -1,9 +1,3 @@
-export default function TextInputGroup({ groupTitle, children }) {
-  return (
-    <div>
-      <p>{groupTitle}</p>
-
-      <div>{children}</div>
-    </div>
-  );
+export default function TextInputGroup({ children }) {
+  return <div>{children}</div>;
 }
