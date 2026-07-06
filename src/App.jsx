@@ -1,4 +1,4 @@
-import Form from "./components/Form";
+import Form from "./components/layouts/Form";
 import { Resume } from "./features/resume-preview";
 import { useResume } from "./hooks/useResume";
 

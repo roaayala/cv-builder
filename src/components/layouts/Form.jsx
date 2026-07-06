@@ -1,8 +1,8 @@
-import ContactForm from "./forms/ContactForm";
-import EducationForm from "./forms/EducationForm";
-import PersonalInformationForm from "./forms/PersonalInformationForm";
-import ProfessionalSummaryForm from "./forms/ProfessionalSummaryForm";
-import SkillForm from "./forms/SkillForm";
+import ContactForm from "../forms/ContactForm";
+import EducationForm from "../forms/EducationForm";
+import PersonalInformationForm from "../forms/PersonalInformationForm";
+import ProfessionalSummaryForm from "../forms/ProfessionalSummaryForm";
+import SkillForm from "../forms/SkillForm";
 
 export default function Form({ data, handlers }) {
   const {
@@ -11,7 +11,7 @@ export default function Form({ data, handlers }) {
     professionalSummary,
     skill,
     education,
-    emplyoment,
+    employment,
   } = data;
   return (
     <form className="w-lg flex flex-col gap-4 p-4">
