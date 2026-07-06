@@ -1,5 +1,5 @@
 import Form from "./components/Form";
-import Resume from "./components/Resume";
+import { Resume } from "./features/resume-preview";
 import { useResume } from "./hooks/useResume";
 
 export default function App() {
