@@ -1,13 +1,12 @@
 import TextInput from "../../../components/ui/TextInput";
 import FormSection from "../../../components/ui/FormSection";
-import TextInputGroup from "../../../components/ui/TextInputGroup";
 
 export default function PersonalInformationForm({ data, handlers }) {
   const { fullName, jobTitle, location } = data;
 
   return (
     <FormSection title={"Personal Information"}>
-      <TextInputGroup>
+      <div>
         <TextInput
           id={"fullName"}
           label={"Full Name"}
@@ -40,7 +39,7 @@ export default function PersonalInformationForm({ data, handlers }) {
             handlers.personalInfo(e);
           }}
         />
-      </TextInputGroup>
+      </div>
     </FormSection>
   );
 }

@@ -1,13 +1,12 @@
 import TextInput from "../../../components/ui/TextInput";
 import FormSection from "../../../components/ui/FormSection";
-import TextInputGroup from "../../../components/ui/TextInputGroup";
 
 export default function ContactForm({ data, handlers }) {
   const { email, phone, website } = data;
 
   return (
     <FormSection title={"Contact"}>
-      <TextInputGroup>
+      <div>
         <TextInput
           id={"email"}
           label={"Email"}
@@ -40,7 +39,7 @@ export default function ContactForm({ data, handlers }) {
             handlers.contact(e);
           }}
         />
-      </TextInputGroup>
+      </div>
     </FormSection>
   );
 }

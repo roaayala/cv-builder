@@ -1,10 +1,9 @@
 import FormSection from "../../../components/ui/FormSection";
-import TextInputGroup from "../../../components/ui/TextInputGroup";
 
 export default function ProfessionalSummaryForm({ data, handlers }) {
   return (
     <FormSection title={"Professional Summary"}>
-      <TextInputGroup>
+      <div>
         <textarea
           name="professionalSummary"
           placeholder="Professional Summary"
@@ -14,7 +13,7 @@ export default function ProfessionalSummaryForm({ data, handlers }) {
           value={data}
           required
         />
-      </TextInputGroup>
+      </div>
     </FormSection>
   );
 }

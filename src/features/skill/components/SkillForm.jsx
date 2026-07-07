@@ -4,6 +4,7 @@ import Button from "../../../components/ui/Button";
 import { Edit, Plus, Save, Trash2, X } from "lucide-react";
 import TextInput from "../../../components/ui/TextInput";
 import createSkill from "../../../models/SkillModel";
+import SkillAddItem from "./SkillAddItem";
 
 export default function SkillForm({ data, handlers }) {
   const { isAdd, editId, draft, actions } = useListManager({
@@ -20,7 +21,7 @@ export default function SkillForm({ data, handlers }) {
           data.map((skill) => (
             <li key={skill.id}>
               {editId === skill.id ? (
-                <>
+                <div>
                   <div>
                     <TextInput
                       id={"editedSkillName"}
@@ -53,9 +54,9 @@ export default function SkillForm({ data, handlers }) {
                       }}
                     />
                   </div>
-                </>
+                </div>
               ) : (
-                <>
+                <div>
                   <p>{skill.name}</p>
                   <div>
                     <Button
@@ -74,47 +75,16 @@ export default function SkillForm({ data, handlers }) {
                       icon={<Trash2 />}
                     />
                   </div>
-                </>
+                </div>
               )}
             </li>
           ))
         )}
       </ul>
 
-      {isAdd ? (
-        <div>
-          <div>
-            <TextInput
-              id={"newSkillName"}
-              label={"New Skill"}
-              placeholder={"Skill"}
-              name={"name"}
-              value={draft.name}
-              onChange={(e) => {
-                actions.handleChange(e);
-              }}
-            />
-          </div>
-          <div>
-            <Button
-              icon={<X />}
-              text={"Cancel"}
-              onClick={(e) => {
-                e.preventDefault();
-                actions.handleCancel();
-              }}
-            />
-            <Button
-              icon={<Save />}
-              text={"Save"}
-              onClick={(e) => {
-                e.preventDefault();
-                actions.handleSaveAdd("name");
-              }}
-            />
-          </div>
-        </div>
-      ) : (
+      {isAdd && <SkillAddItem draft={draft} actions={actions} />}
+
+      {!isAdd && !editId && (
         <div>
           <Button
             icon={<Plus />}
