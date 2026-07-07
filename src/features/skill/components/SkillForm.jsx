@@ -6,35 +6,6 @@ import { Plus, Save, Edit, Trash2, X } from "lucide-react";
 import createSkill from "../../models/SkillModel";
 
 export default function SkillForm({ data, handlers }) {
-  const [isAdd, setIsAdd] = useState(false);
-  const [newSkill, setNewSkill] = useState("");
-
-  const [editId, setEditId] = useState("");
-  const [editedSkill, setEditedSkill] = useState("");
-
-  const handleAdd = (e) => {
-    e.preventDefault();
-    setIsAdd(true);
-    setEditId("");
-    setEditedSkill("");
-  };
-
-  const handleSave = (e) => {
-    e.preventDefault();
-
-    if (newSkill === "") return;
-
-    handlers.skill.add(createSkill({ name: newSkill }));
-
-    setNewSkill("");
-    setIsAdd(false);
-  };
-
-  const handleCancel = (e) => {
-    e.preventDefault();
-    setIsAdd(false);
-  };
-
   return (
     <section>
       <FormHeader sectionTitle={"Skill"} isOpen={isOpen} onOpen={handleOpen} />

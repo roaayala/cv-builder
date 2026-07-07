@@ -16,23 +16,43 @@ export default function useListManager({ handlers, generateEmptyTemplate }) {
     setDraft(generateEmptyTemplate());
   };
 
-  const handleSaveAdd = () => {
-    if (draft.name === "") return;
+  const handleSaveAdd = (keys) => {
+    const prepareKeys = Array.isArray(keys) ? keys : [keys];
+    const hasEmptyField = prepareKeys.some((key) => draft[key] === "");
+    if (hasEmptyField === "") return;
+
     handlers.add(draft);
     setDraft(generateEmptyTemplate());
     setIsAdd(false);
   };
 
-  const handleCancelAdd = () => {
+  const handleEdit = (item) => {
+    setEditId(item.id);
     setIsAdd(false);
+    setDraft(item);
+  };
+
+  const handleSaveEdit = (keys) => {
+    const prepareKeys = Array.isArray(keys) ? keys : [keys];
+    const hasEmptyField = prepareKeys.some((key) => draft[key] === "");
+    if (hasEmptyField === "") return;
+
+    handlers.edit(editId, draft);
+
+    setEditId(null);
     setDraft(generateEmptyTemplate());
   };
 
-  const handleEdit = () => {};
+  const handleDelete = (id) => {
+    handlers.delete(id);
+    setIsAdd(false);
+  };
 
-  const handleSaveEdit = () => {};
-
-  const handleCancelEdit = () => {};
+  const handleCancel = () => {
+    setIsAdd(false);
+    setEditId(null);
+    setDraft(generateEmptyTemplate());
+  };
 
   return {
     isAdd,
@@ -42,6 +62,10 @@ export default function useListManager({ handlers, generateEmptyTemplate }) {
       handleChange,
       handleAdd,
       handleSaveAdd,
+      handleEdit,
+      handleSaveEdit,
+      handleDelete,
+      handleCancel,
     },
   };
 }
