@@ -1,98 +1,131 @@
-import { useState } from "react";
-import FormHeader from "./FormHeader";
-import Button from "../commons/Button";
-import TextInput from "./TextInput";
-import { Plus, Save, Edit, Trash2, X } from "lucide-react";
-import createSkill from "../../models/SkillModel";
+import FormSection from "../../../components/ui/FormSection";
+import useListManager from "../../../hooks/useListManager";
+import Button from "../../../components/ui/Button";
+import { Edit, Plus, Save, Trash2, X } from "lucide-react";
+import TextInput from "../../../components/ui/TextInput";
+import createSkill from "../../../models/SkillModel";
 
 export default function SkillForm({ data, handlers }) {
+  const { isAdd, editId, draft, actions } = useListManager({
+    handlers: handlers.skill,
+    generateEmptyTemplate: () => createSkill({ name: "" }),
+  });
+
   return (
-    <section>
-      <FormHeader sectionTitle={"Skill"} isOpen={isOpen} onOpen={handleOpen} />
+    <FormSection title={"Skill"}>
+      <ul>
+        {data.length === 0 ? (
+          <li>No skill added!</li>
+        ) : (
+          data.map((skill) => (
+            <li key={skill.id}>
+              {editId === skill.id ? (
+                <>
+                  <div>
+                    <TextInput
+                      id={"editedSkillName"}
+                      label={"Edit Skill"}
+                      placeholder={"Skill"}
+                      name={"name"}
+                      value={draft.name}
+                      onChange={(e) => {
+                        actions.handleChange(e);
+                      }}
+                    />
+                  </div>
 
-      {isOpen && (
-        <>
-          <ul>
-            {data.length === 0 ? (
-              <li>No skill added!</li>
-            ) : (
-              data.map((skill) => (
-                <li key={skill.id} className="flex">
-                  {editId === skill.id ? (
-                    <>
-                      <input
-                        type="text"
-                        value={editedSkill}
-                        onChange={(e) => {
-                          setEditedSkill(e.target.value);
-                        }}
-                      />
+                  <div>
+                    <Button
+                      icon={<X />}
+                      text={"Cancel Edit"}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        actions.handleCancel();
+                      }}
+                    />
 
-                      <Button
-                        onClick={(e) => {
-                          e.preventDefault();
+                    <Button
+                      icon={<Save />}
+                      text={"Save Edit"}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        actions.handleSaveEdit("name");
+                      }}
+                    />
+                  </div>
+                </>
+              ) : (
+                <>
+                  <p>{skill.name}</p>
+                  <div>
+                    <Button
+                      onClick={(e) => {
+                        e.preventDefault();
+                        actions.handleEdit(skill);
+                      }}
+                      icon={<Edit />}
+                    />
 
-                          if (editedSkill === "") return;
+                    <Button
+                      onClick={(e) => {
+                        e.preventDefault();
+                        actions.handleDelete(skill.id);
+                      }}
+                      icon={<Trash2 />}
+                    />
+                  </div>
+                </>
+              )}
+            </li>
+          ))
+        )}
+      </ul>
 
-                          handlers.skill.edit(skill.id, editedSkill);
-
-                          setEditedSkill("");
-                          setEditId("");
-                        }}
-                        icon={<Save />}
-                      />
-                    </>
-                  ) : (
-                    <>
-                      <span>{skill.name}</span>
-                      <Button
-                        onClick={(e) => {
-                          e.preventDefault();
-                          setEditId(skill.id);
-                          setEditedSkill(skill.name);
-                          setIsAdd(false);
-                          setNewSkill("");
-                        }}
-                        icon={<Edit />}
-                      />
-                      <Button
-                        onClick={(e) => {
-                          e.preventDefault();
-                          handlers.skill.delete(skill.id);
-                        }}
-                        icon={<Trash2 />}
-                      />
-                    </>
-                  )}
-                </li>
-              ))
-            )}
-          </ul>
-
-          {isAdd && (
+      {isAdd ? (
+        <div>
+          <div>
             <TextInput
-              id={"skill"}
+              id={"newSkillName"}
               label={"New Skill"}
               placeholder={"Skill"}
-              value={newSkill}
-              onChange={(e) => setNewSkill(e.target.value)}
+              name={"name"}
+              value={draft.name}
+              onChange={(e) => {
+                actions.handleChange(e);
+              }}
             />
-          )}
-
-          <div>
-            {isAdd && (
-              <>
-                <Button icon={<X />} text={"Cancel"} onClick={handleCancel} />
-                <Button icon={<Save />} text={"Save"} onClick={handleSave} />
-              </>
-            )}
-
-            {!isAdd && !editId && (
-              <Button icon={<Plus />} text={"Add Skill"} onClick={handleAdd} />
-            )}
           </div>
-        </>
+          <div>
+            <Button
+              icon={<X />}
+              text={"Cancel"}
+              onClick={(e) => {
+                e.preventDefault();
+                actions.handleCancel();
+              }}
+            />
+            <Button
+              icon={<Save />}
+              text={"Save"}
+              onClick={(e) => {
+                e.preventDefault();
+                actions.handleSaveAdd("name");
+              }}
+            />
+          </div>
+        </div>
+      ) : (
+        <div>
+          <Button
+            icon={<Plus />}
+            text={"Add Skill"}
+            onClick={(e) => {
+              e.preventDefault();
+              actions.handleAdd();
+            }}
+          />
+        </div>
       )}
-    </section>
+    </FormSection>
   );
 }

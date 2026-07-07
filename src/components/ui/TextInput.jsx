@@ -1,6 +1,7 @@
 export default function TextInput({
   id,
   label,
+  name,
   placeholder,
   type = "text",
   required = false,
@@ -9,15 +10,12 @@ export default function TextInput({
 }) {
   return (
     <div className="flex flex-col">
-      <label htmlFor={id} className="">
-        {label}
-      </label>
+      <label htmlFor={id}>{label}</label>
       <input
-        className=""
         required={required}
         id={id}
         placeholder={placeholder}
-        name={id}
+        name={name}
         value={value}
         type={type}
         onChange={onChange}

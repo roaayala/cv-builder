@@ -40,7 +40,7 @@ export function useResume() {
       edit: (id, editedSkill) => {
         const updatedSkill = resume.skill.map((s) => {
           if (s.id === id) {
-            return { ...s, name: editedSkill };
+            return editedSkill;
           }
           return s;
         });

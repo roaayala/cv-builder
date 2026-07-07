@@ -3,6 +3,7 @@ import {
   ContactForm,
   ProfessionalSummaryForm,
 } from "../../features/basic-info";
+import { SkillForm } from "../../features/skill";
 
 export default function Form({ data, handlers }) {
   const {
@@ -18,6 +19,7 @@ export default function Form({ data, handlers }) {
       <PersonalInformationForm data={personalInformation} handlers={handlers} />
       <ContactForm data={contact} handlers={handlers} />
       <ProfessionalSummaryForm data={professionalSummary} handlers={handlers} />
+      <SkillForm data={skill} handlers={handlers} />
     </form>
   );
 }
