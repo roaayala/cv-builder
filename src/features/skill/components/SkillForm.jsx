@@ -5,6 +5,7 @@ import { Edit, Plus, Save, Trash2, X } from "lucide-react";
 import TextInput from "../../../components/ui/TextInput";
 import createSkill from "../../../models/SkillModel";
 import SkillAddItem from "./SkillAddItem";
+import SkillReadItem from "./SkillReadItem";
 
 export default function SkillForm({ data, handlers }) {
   const { isAdd, editId, draft, actions } = useListManager({
@@ -56,26 +57,7 @@ export default function SkillForm({ data, handlers }) {
                   </div>
                 </div>
               ) : (
-                <div>
-                  <p>{skill.name}</p>
-                  <div>
-                    <Button
-                      onClick={(e) => {
-                        e.preventDefault();
-                        actions.handleEdit(skill);
-                      }}
-                      icon={<Edit />}
-                    />
-
-                    <Button
-                      onClick={(e) => {
-                        e.preventDefault();
-                        actions.handleDelete(skill.id);
-                      }}
-                      icon={<Trash2 />}
-                    />
-                  </div>
-                </div>
+                <SkillReadItem skill={skill} actions={actions} />
               )}
             </li>
           ))
