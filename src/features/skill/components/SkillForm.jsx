@@ -1,11 +1,11 @@
 import FormSection from "../../../components/ui/FormSection";
 import useListManager from "../../../hooks/useListManager";
 import Button from "../../../components/ui/Button";
-import { Edit, Plus, Save, Trash2, X } from "lucide-react";
-import TextInput from "../../../components/ui/TextInput";
+import { Plus } from "lucide-react";
 import createSkill from "../../../models/SkillModel";
 import SkillAddItem from "./SkillAddItem";
 import SkillReadItem from "./SkillReadItem";
+import SkillEditItem from "./SkillEditItem";
 
 export default function SkillForm({ data, handlers }) {
   const { isAdd, editId, draft, actions } = useListManager({
@@ -22,40 +22,7 @@ export default function SkillForm({ data, handlers }) {
           data.map((skill) => (
             <li key={skill.id}>
               {editId === skill.id ? (
-                <div>
-                  <div>
-                    <TextInput
-                      id={"editedSkillName"}
-                      label={"Edit Skill"}
-                      placeholder={"Skill"}
-                      name={"name"}
-                      value={draft.name}
-                      onChange={(e) => {
-                        actions.handleChange(e);
-                      }}
-                    />
-                  </div>
-
-                  <div>
-                    <Button
-                      icon={<X />}
-                      text={"Cancel Edit"}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        actions.handleCancel();
-                      }}
-                    />
-
-                    <Button
-                      icon={<Save />}
-                      text={"Save Edit"}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        actions.handleSaveEdit("name");
-                      }}
-                    />
-                  </div>
-                </div>
+                <SkillEditItem draft={draft} actions={actions} />
               ) : (
                 <SkillReadItem skill={skill} actions={actions} />
               )}
