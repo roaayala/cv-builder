@@ -1,8 +1,15 @@
 export default function createEducation({
+  id,
   institute = "",
   degree = "",
-  start = "",
-  end = "",
+  startYear = "",
+  endYear = "",
 } = {}) {
-  return { id: crypto.randomUUID(), institute, degree, start, end };
+  return {
+    id: id || crypto.randomUUID(),
+    institute,
+    degree,
+    startYear,
+    endYear,
+  };
 }
