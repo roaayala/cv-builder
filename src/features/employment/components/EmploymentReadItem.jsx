@@ -1,15 +1,15 @@
 import { Edit, Trash2 } from "lucide-react";
 import Button from "../../../components/ui/Button";
 
-export default function EducationReadItem({ education, actions }) {
+export default function EmploymentReadItem({ employment, actions }) {
   return (
     <div className="flex justify-between">
-      <p>{education.institute}</p>
+      <p>{employment.workplace}</p>
       <div className="flex gap-2">
         <Button
           onClick={(e) => {
             e.preventDefault();
-            actions.handleEdit(education);
+            actions.handleEdit(employment);
           }}
           icon={<Edit />}
         />
@@ -17,7 +17,7 @@ export default function EducationReadItem({ education, actions }) {
         <Button
           onClick={(e) => {
             e.preventDefault();
-            actions.handleDelete(education.id);
+            actions.handleDelete(employment.id);
           }}
           icon={<Trash2 />}
         />
