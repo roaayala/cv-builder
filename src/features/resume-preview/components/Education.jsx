@@ -9,7 +9,8 @@ export default function Education({ data }) {
               <span>{education.degree}</span> at {education.institute}
             </h3>
             <p>
-              <span>{education.start}</span> - <span>{education.end}</span>
+              <span>{education.startYear}</span> -{" "}
+              <span>{education.endYear}</span>
             </p>
           </li>
         ))}
