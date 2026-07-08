@@ -2,27 +2,27 @@ import { Save, X } from "lucide-react";
 import Button from "../../../components/ui/Button";
 import TextInput from "../../../components/ui/TextInput";
 
-export default function EducationEditItem({ draft, actions }) {
+export default function EmploymentEditItem({ draft, actions }) {
   return (
     <div>
       <div>
         <TextInput
-          id={"editInstitute"}
-          label={"Edit Institute"}
-          placeholder={"Institute"}
-          name={"institute"}
-          value={draft.institute}
+          id={"editWorkplace"}
+          label={"Edit Workplace"}
+          placeholder={"Workplace"}
+          name={"workplace"}
+          value={draft.workplace}
           onChange={(e) => {
             actions.handleChange(e);
           }}
         />
 
         <TextInput
-          id={"editDegree"}
-          label={"Edit Degree"}
-          placeholder={"Degree"}
-          name={"degree"}
-          value={draft.degree}
+          id={"editRole"}
+          label={"Edit Role"}
+          placeholder={"Role"}
+          name={"role"}
+          value={draft.role}
           onChange={(e) => {
             actions.handleChange(e);
           }}
@@ -69,8 +69,8 @@ export default function EducationEditItem({ draft, actions }) {
           onClick={(e) => {
             e.preventDefault();
             actions.handleSaveEdit([
-              "institute",
-              "degree",
+              "workplace",
+              "role",
               "startYear",
               "endYear",
             ]);
