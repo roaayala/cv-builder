@@ -3,6 +3,8 @@ import {
   ContactForm,
   ProfessionalSummaryForm,
 } from "../../features/basic-info";
+import EducationForm from "../../features/education/components/EducationForm";
+import { EmploymentForm } from "../../features/employment";
 import { SkillForm } from "../../features/skill";
 
 export default function Form({ data, handlers }) {
@@ -20,6 +22,8 @@ export default function Form({ data, handlers }) {
       <ContactForm data={contact} handlers={handlers} />
       <ProfessionalSummaryForm data={professionalSummary} handlers={handlers} />
       <SkillForm data={skill} handlers={handlers} />
+      <EducationForm data={education} handlers={handlers} />
+      <EmploymentForm data={employment} handlers={handlers} />
     </form>
   );
 }

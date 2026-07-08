@@ -6,7 +6,7 @@ export default function App() {
   const [resume, handlers] = useResume();
 
   return (
-    <div className="flex gap-4 h-screen">
+    <div className="flex h-screen">
       <Form data={resume} handlers={handlers} />
       <Resume data={resume} />
     </div>

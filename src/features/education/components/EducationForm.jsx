@@ -1,4 +1,6 @@
+import FormSection from "../../../components/ui/FormSection";
 import useListManager from "../../../hooks/useListManager";
+import EducationReadItem from "./EducationReadItem";
 
 export default function EducationForm({ data, handlers }) {
   const { isAdd, editId, draft, actions } = useListManager({
@@ -6,54 +8,26 @@ export default function EducationForm({ data, handlers }) {
     generateEmptyTemplate: () => {},
   });
 
-  return;
+  return (
+    <FormSection title={"Education"}>
+      <ul>
+        {data.length === 0 ? (
+          <li>No education added!</li>
+        ) : (
+          data.map((education) => (
+            <li key={education.id}>
+              {editId === education.id ? (
+                <></>
+              ) : (
+                <EducationReadItem education={education} actions={actions} />
+              )}
+            </li>
+          ))
+        )}
+      </ul>
+    </FormSection>
+  );
 }
-
-// const handleAdd = (e) => {
-//   e.preventDefault();
-
-//   setNewEducation(createEducation());
-//   setIsAdd(true);
-// };
-
-// const handleSaveAdd = (e) => {
-//   e.preventDefault();
-
-//   if (newEducation.institute === "" || newEducation.degree === "") return;
-
-//   handlers.education.add(newEducation);
-
-//   setNewEducation(createEducation());
-//   setIsAdd(false);
-// };
-
-// const handleCancelAdd = (e) => {
-//   e.preventDefault();
-
-//   setNewEducation(createEducation());
-//   setIsAdd(false);
-// };
-
-// const handleEdit = (e, id) => {
-//   e.preventDefault();
-//   setEditId(id);
-// };
-
-// const handleSaveEdit = (e) => {
-//   e.preventDefault();
-// };
-
-// const handleCancelEdit = (e) => {
-//   e.preventDefault();
-
-//   setNewEducation(createEducation());
-//   setEditId("");
-// };
-
-// const handleDelete = (e, id) => {
-//   e.preventDefault();
-//   handlers.education.delete(id);
-// };
 
 // return (
 //   <section>
