@@ -9,7 +9,7 @@ export default function TextInput({
   onChange,
 }) {
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col gap-1">
       <label className="text-sm" htmlFor={id}>
         {label}
       </label>
