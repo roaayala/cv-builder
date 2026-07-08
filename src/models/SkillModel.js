@@ -1,3 +1,3 @@
-export default function createSkill({ name }) {
-  return { id: crypto.randomUUID(), name };
+export default function createSkill({ id, name = "" }) {
+  return { id: id || crypto.randomUUID(), name };
 }
