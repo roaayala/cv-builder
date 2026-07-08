@@ -3,15 +3,16 @@ import Button from "../../../components/ui/Button";
 
 export default function EducationReadItem({ education, actions }) {
   return (
-    <div className="flex justify-between">
-      <p>{education.institute}</p>
-      <div className="flex gap-2">
+    <div className="flex justify-between items-center">
+      <p className="text-sm">{education.institute}</p>
+      <div className="flex">
         <Button
           onClick={(e) => {
             e.preventDefault();
             actions.handleEdit(education);
           }}
-          icon={<Edit />}
+          icon={<Edit size={18} />}
+          variant="ghost"
         />
 
         <Button
@@ -19,7 +20,8 @@ export default function EducationReadItem({ education, actions }) {
             e.preventDefault();
             actions.handleDelete(education.id);
           }}
-          icon={<Trash2 />}
+          icon={<Trash2 size={18} />}
+          variant="ghost"
         />
       </div>
     </div>

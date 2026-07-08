@@ -4,7 +4,7 @@ import FormSection from "../../../components/ui/FormSection";
 export default function ProfessionalSummaryForm({ data, handlers }) {
   return (
     <FormSection icon={<FileText />} title={"Professional Summary"}>
-      <div className="flex flex-col gap-4 py-4">
+      <div className="flex flex-col gap-2 pb-4">
         <textarea
           name="professionalSummary"
           placeholder="Professional Summary"

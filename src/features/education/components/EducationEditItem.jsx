@@ -4,8 +4,8 @@ import TextInput from "../../../components/ui/TextInput";
 
 export default function EducationEditItem({ draft, actions }) {
   return (
-    <div>
-      <div>
+    <div className="flex flex-col gap-4 mb-4">
+      <div className="flex flex-col gap-2">
         <TextInput
           id={"editInstitute"}
           label={"Edit Institute"}
@@ -28,35 +28,33 @@ export default function EducationEditItem({ draft, actions }) {
           }}
         />
 
-        <div>
-          <TextInput
-            id={"editStartYear"}
-            label={"Edit Start Year"}
-            placeholder={"Start Year"}
-            name={"startYear"}
-            value={draft.startYear}
-            onChange={(e) => {
-              actions.handleChange(e);
-            }}
-          />
+        <TextInput
+          id={"editStartYear"}
+          label={"Edit Start Year"}
+          placeholder={"Start Year"}
+          name={"startYear"}
+          value={draft.startYear}
+          onChange={(e) => {
+            actions.handleChange(e);
+          }}
+        />
 
-          <TextInput
-            id={"editEndYear"}
-            label={"Edit End Year"}
-            placeholder={"End Year"}
-            name={"endYear"}
-            value={draft.endYear}
-            onChange={(e) => {
-              actions.handleChange(e);
-            }}
-          />
-        </div>
+        <TextInput
+          id={"editEndYear"}
+          label={"Edit End Year"}
+          placeholder={"End Year"}
+          name={"endYear"}
+          value={draft.endYear}
+          onChange={(e) => {
+            actions.handleChange(e);
+          }}
+        />
       </div>
 
       <div className="flex justify-end gap-4">
         <Button
-          icon={<X />}
-          text={"Cancel Edit"}
+          icon={<X size={18} />}
+          text={"Cancel"}
           onClick={(e) => {
             e.preventDefault();
             actions.handleCancel();
@@ -64,8 +62,9 @@ export default function EducationEditItem({ draft, actions }) {
         />
 
         <Button
-          icon={<Save />}
-          text={"Save Edit"}
+          icon={<Save size={18} />}
+          variant="primary"
+          text={"Save"}
           onClick={(e) => {
             e.preventDefault();
             actions.handleSaveEdit([

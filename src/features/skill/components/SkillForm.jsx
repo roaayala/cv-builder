@@ -15,36 +15,39 @@ export default function SkillForm({ data, handlers }) {
 
   return (
     <FormSection icon={<Lightbulb />} title={"Skill"}>
-      <ul>
-        {data.length === 0 ? (
-          <li>No skill added!</li>
-        ) : (
-          data.map((skill) => (
-            <li key={skill.id}>
-              {editId === skill.id ? (
-                <SkillEditItem draft={draft} actions={actions} />
-              ) : (
-                <SkillReadItem skill={skill} actions={actions} />
-              )}
-            </li>
-          ))
+      <div className="flex flex-col gap-4 pb-4">
+        <ul>
+          {data.length === 0 ? (
+            <li className="text-sm italic">No skill added!</li>
+          ) : (
+            data.map((skill) => (
+              <li key={skill.id}>
+                {editId === skill.id ? (
+                  <SkillEditItem draft={draft} actions={actions} />
+                ) : (
+                  <SkillReadItem skill={skill} actions={actions} />
+                )}
+              </li>
+            ))
+          )}
+        </ul>
+
+        {isAdd && <SkillAddItem draft={draft} actions={actions} />}
+
+        {!isAdd && !editId && (
+          <div className="flex justify-end">
+            <Button
+              icon={<Plus size={16} />}
+              variant="primary"
+              text={"Add Skill"}
+              onClick={(e) => {
+                e.preventDefault();
+                actions.handleAdd();
+              }}
+            />
+          </div>
         )}
-      </ul>
-
-      {isAdd && <SkillAddItem draft={draft} actions={actions} />}
-
-      {!isAdd && !editId && (
-        <div>
-          <Button
-            icon={<Plus />}
-            text={"Add Skill"}
-            onClick={(e) => {
-              e.preventDefault();
-              actions.handleAdd();
-            }}
-          />
-        </div>
-      )}
+      </div>
     </FormSection>
   );
 }

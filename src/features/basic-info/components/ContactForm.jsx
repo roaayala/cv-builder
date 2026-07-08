@@ -7,7 +7,7 @@ export default function ContactForm({ data, handlers }) {
 
   return (
     <FormSection icon={<Contact />} title={"Contact"}>
-      <div className="flex flex-col gap-4 py-4 ">
+      <div className="flex flex-col gap-2 pb-4 ">
         <TextInput
           id={"email"}
           label={"Email"}

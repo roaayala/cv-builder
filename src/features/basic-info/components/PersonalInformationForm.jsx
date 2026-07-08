@@ -7,7 +7,7 @@ export default function PersonalInformationForm({ data, handlers }) {
 
   return (
     <FormSection icon={<User />} title={"Personal Information"}>
-      <div className="flex flex-col gap-4 py-4 ">
+      <div className="flex flex-col gap-2 pb-4">
         <TextInput
           id={"fullName"}
           label={"Full Name"}
