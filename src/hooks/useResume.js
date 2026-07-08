@@ -68,6 +68,17 @@ export function useResume() {
         });
       },
 
+      edit: (id, editedEducation) => {
+        const updatedEducation = resume.education.map((ed) => {
+          if (ed.id === id) {
+            return editedEducation;
+          }
+          return ed;
+        });
+
+        setResume({ ...resume, education: updatedEducation });
+      },
+
       delete: (id) => {
         const filteredEducation = resume.education.filter((e) => e.id !== id);
         setResume({ ...resume, education: filteredEducation });
