@@ -1,5 +1,6 @@
 import FormSection from "../../../components/ui/FormSection";
 import useListManager from "../../../hooks/useListManager";
+import EducationEditItem from "./EducationEditItem";
 import EducationReadItem from "./EducationReadItem";
 
 export default function EducationForm({ data, handlers }) {
@@ -17,7 +18,7 @@ export default function EducationForm({ data, handlers }) {
           data.map((education) => (
             <li key={education.id}>
               {editId === education.id ? (
-                <></>
+                <EducationEditItem draft={draft} actions={actions} />
               ) : (
                 <EducationReadItem education={education} actions={actions} />
               )}
