@@ -1,4 +1,4 @@
-import { Plus } from "lucide-react";
+import { GraduationCap, Plus } from "lucide-react";
 import Button from "../../../components/ui/Button";
 import FormSection from "../../../components/ui/FormSection";
 import useListManager from "../../../hooks/useListManager";
@@ -14,7 +14,7 @@ export default function EducationForm({ data, handlers }) {
   });
 
   return (
-    <FormSection title={"Education"}>
+    <FormSection icon={<GraduationCap />} title={"Education"}>
       <ul>
         {data.length === 0 ? (
           <li>No education added!</li>

@@ -1,11 +1,12 @@
 import TextInput from "../../../components/ui/TextInput";
 import FormSection from "../../../components/ui/FormSection";
+import { Contact } from "lucide-react";
 
 export default function ContactForm({ data, handlers }) {
   const { email, phone, website } = data;
 
   return (
-    <FormSection title={"Contact"}>
+    <FormSection icon={<Contact />} title={"Contact"}>
       <div className="flex flex-col gap-4 py-4 ">
         <TextInput
           id={"email"}

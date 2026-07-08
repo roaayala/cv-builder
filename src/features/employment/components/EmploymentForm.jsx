@@ -5,7 +5,7 @@ import EmploymentEditItem from "./EmploymentEditItem";
 import EmploymentReadItem from "./EmploymentReadItem";
 import EmploymentAddItem from "./EmploymentAddItem";
 import Button from "../../../components/ui/Button";
-import { Plus } from "lucide-react";
+import { BriefcaseBusiness, Plus } from "lucide-react";
 
 export default function EmploymentForm({ data, handlers }) {
   const { isAdd, editId, draft, actions } = useListManager({
@@ -13,7 +13,7 @@ export default function EmploymentForm({ data, handlers }) {
     generateEmptyTemplate: () => createEmployment(),
   });
   return (
-    <FormSection title={"Employment"}>
+    <FormSection icon={<BriefcaseBusiness />} title={"Employment"}>
       <ul>
         {data.length === 0 ? (
           <li>No Employment added!</li>

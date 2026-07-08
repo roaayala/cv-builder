@@ -1,7 +1,7 @@
 import FormSection from "../../../components/ui/FormSection";
 import useListManager from "../../../hooks/useListManager";
 import Button from "../../../components/ui/Button";
-import { Plus } from "lucide-react";
+import { Lightbulb, Plus } from "lucide-react";
 import createSkill from "../../../models/SkillModel";
 import SkillAddItem from "./SkillAddItem";
 import SkillReadItem from "./SkillReadItem";
@@ -14,7 +14,7 @@ export default function SkillForm({ data, handlers }) {
   });
 
   return (
-    <FormSection title={"Skill"}>
+    <FormSection icon={<Lightbulb />} title={"Skill"}>
       <ul>
         {data.length === 0 ? (
           <li>No skill added!</li>

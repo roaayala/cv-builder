@@ -1,11 +1,12 @@
 import TextInput from "../../../components/ui/TextInput";
 import FormSection from "../../../components/ui/FormSection";
+import { User } from "lucide-react";
 
 export default function PersonalInformationForm({ data, handlers }) {
   const { fullName, jobTitle, location } = data;
 
   return (
-    <FormSection title={"Personal Information"}>
+    <FormSection icon={<User />} title={"Personal Information"}>
       <div className="flex flex-col gap-4 py-4 ">
         <TextInput
           id={"fullName"}

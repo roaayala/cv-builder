@@ -1,8 +1,9 @@
+import { FileText } from "lucide-react";
 import FormSection from "../../../components/ui/FormSection";
 
 export default function ProfessionalSummaryForm({ data, handlers }) {
   return (
-    <FormSection title={"Professional Summary"}>
+    <FormSection icon={<FileText />} title={"Professional Summary"}>
       <div className="flex flex-col gap-4 py-4">
         <textarea
           name="professionalSummary"
