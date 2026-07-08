@@ -7,21 +7,21 @@ export default function EducationAddItem({ draft, actions }) {
     <div>
       <div>
         <TextInput
-          id={"newInstitute"}
-          label={"Institute"}
-          placeholder={"Institute"}
-          name={"institute"}
-          value={draft.institute}
+          id={"newWorkplace"}
+          label={"Workplace"}
+          placeholder={"Workplace"}
+          name={"workplace"}
+          value={draft.workplace}
           onChange={(e) => {
             actions.handleChange(e);
           }}
         />
 
         <TextInput
-          id={"newDegree"}
-          label={"Degree"}
-          placeholder={"Degree"}
-          name={"degree"}
+          id={"newRole"}
+          label={"Role"}
+          placeholder={"Role"}
+          name={"role"}
           value={draft.degree}
           onChange={(e) => {
             actions.handleChange(e);
@@ -67,8 +67,8 @@ export default function EducationAddItem({ draft, actions }) {
           onClick={(e) => {
             e.preventDefault();
             actions.handleSaveAdd([
-              "institute",
-              "degree",
+              "workplace",
+              "role",
               "startYear",
               "endYear",
             ]);

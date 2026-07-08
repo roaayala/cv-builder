@@ -9,7 +9,7 @@ import { Plus } from "lucide-react";
 
 export default function EmploymentForm({ data, handlers }) {
   const { isAdd, editId, draft, actions } = useListManager({
-    handlers: handlers.education,
+    handlers: handlers.employment,
     generateEmptyTemplate: () => createEmployment(),
   });
   return (

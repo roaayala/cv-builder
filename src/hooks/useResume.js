@@ -84,6 +84,31 @@ export function useResume() {
         setResume({ ...resume, education: filteredEducation });
       },
     },
+
+    employment: {
+      add: (newEmployment) => {
+        setResume({
+          ...resume,
+          employment: [...resume.employment, newEmployment],
+        });
+      },
+
+      edit: (id, editedEmployment) => {
+        const updatedEmployment = resume.employment.map((ed) => {
+          if (ed.id === id) {
+            return editedEmployment;
+          }
+          return ed;
+        });
+
+        setResume({ ...resume, employment: updatedEmployment });
+      },
+
+      delete: (id) => {
+        const filteredEmployment = resume.employment.filter((e) => e.id !== id);
+        setResume({ ...resume, employment: filteredEmployment });
+      },
+    },
   };
 
   return [resume, handlers];
