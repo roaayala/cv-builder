@@ -2,13 +2,13 @@ import { Save, X } from "lucide-react";
 import Button from "../../../components/ui/Button";
 import TextInput from "../../../components/ui/TextInput";
 
-export default function EducationEditItem({ draft, actions }) {
+export default function EducationAddItem({ draft, actions }) {
   return (
     <div>
       <div>
         <TextInput
-          id={"editInstitute"}
-          label={"Edit Institute"}
+          id={"newInstitute"}
+          label={"Institute"}
           placeholder={"Institute"}
           name={"institute"}
           value={draft.institute}
@@ -18,8 +18,8 @@ export default function EducationEditItem({ draft, actions }) {
         />
 
         <TextInput
-          id={"editDegree"}
-          label={"Edit Degree"}
+          id={"newDegree"}
+          label={"Degree"}
           placeholder={"Degree"}
           name={"degree"}
           value={draft.degree}
@@ -30,8 +30,8 @@ export default function EducationEditItem({ draft, actions }) {
 
         <div>
           <TextInput
-            id={"editStartYear"}
-            label={"Edit Start Year"}
+            id={"newStartYear"}
+            label={"Start Year"}
             placeholder={"Start Year"}
             name={"startYear"}
             value={draft.startYear}
@@ -41,8 +41,8 @@ export default function EducationEditItem({ draft, actions }) {
           />
 
           <TextInput
-            id={"editEndYear"}
-            label={"Edit End Year"}
+            id={"newEndYear"}
+            label={"End Year"}
             placeholder={"End Year"}
             name={"endYear"}
             value={draft.endYear}
@@ -52,23 +52,21 @@ export default function EducationEditItem({ draft, actions }) {
           />
         </div>
       </div>
-
       <div className="flex justify-end gap-4">
         <Button
           icon={<X />}
-          text={"Cancel Edit"}
+          text={"Cancel"}
           onClick={(e) => {
             e.preventDefault();
             actions.handleCancel();
           }}
         />
-
         <Button
           icon={<Save />}
-          text={"Save Edit"}
+          text={"Save"}
           onClick={(e) => {
             e.preventDefault();
-            actions.handleSaveEdit([
+            actions.handleSaveAdd([
               "institute",
               "degree",
               "startYear",

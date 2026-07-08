@@ -19,6 +19,7 @@ export default function useListManager({ handlers, generateEmptyTemplate }) {
   const handleSaveAdd = (keys) => {
     const prepareKeys = Array.isArray(keys) ? keys : [keys];
     const hasEmptyField = prepareKeys.some((key) => draft[key] === "");
+
     if (hasEmptyField) return;
 
     handlers.add(draft);

@@ -1,12 +1,16 @@
+import { Plus } from "lucide-react";
+import Button from "../../../components/ui/Button";
 import FormSection from "../../../components/ui/FormSection";
 import useListManager from "../../../hooks/useListManager";
 import EducationEditItem from "./EducationEditItem";
 import EducationReadItem from "./EducationReadItem";
+import EducationAddItem from "./EducationAddItem";
+import createEducation from "../../../models/EducationModel";
 
 export default function EducationForm({ data, handlers }) {
   const { isAdd, editId, draft, actions } = useListManager({
     handlers: handlers.education,
-    generateEmptyTemplate: () => {},
+    generateEmptyTemplate: () => createEducation(),
   });
 
   return (
@@ -26,6 +30,21 @@ export default function EducationForm({ data, handlers }) {
           ))
         )}
       </ul>
+
+      {isAdd && <EducationAddItem draft={draft} actions={actions} />}
+
+      {!isAdd && !editId && (
+        <div>
+          <Button
+            icon={<Plus />}
+            text={"Add Education"}
+            onClick={(e) => {
+              e.preventDefault();
+              actions.handleAdd();
+            }}
+          />
+        </div>
+      )}
     </FormSection>
   );
 }
