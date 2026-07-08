@@ -18,7 +18,7 @@ export default function SkillEditItem({ draft, actions }) {
         />
       </div>
 
-      <div>
+      <div className="flex justify-end gap-4">
         <Button
           icon={<X />}
           text={"Cancel Edit"}

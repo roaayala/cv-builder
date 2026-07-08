@@ -3,9 +3,9 @@ import Button from "../../../components/ui/Button";
 
 export default function SkillReadItem({ skill, actions }) {
   return (
-    <div>
+    <div className="flex justify-between">
       <p>{skill.name}</p>
-      <div>
+      <div className="flex gap-2">
         <Button
           onClick={(e) => {
             e.preventDefault();
