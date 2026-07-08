@@ -6,7 +6,7 @@ export default function PersonalInformationForm({ data, handlers }) {
 
   return (
     <FormSection title={"Personal Information"}>
-      <div>
+      <div className="flex flex-col gap-4 py-4 ">
         <TextInput
           id={"fullName"}
           label={"Full Name"}

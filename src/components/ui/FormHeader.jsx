@@ -7,7 +7,7 @@ export default function FormHeader({ sectionTitle, isOpen, onOpen }) {
       className="flex justify-between align-middle cursor-pointer"
       onClick={onOpen}
     >
-      <h2>{sectionTitle}</h2>
+      <h2 className="font-semibold">{sectionTitle}</h2>
       {isOpen ? (
         <Button icon={<ChevronUp />} onClick={onOpen} />
       ) : (

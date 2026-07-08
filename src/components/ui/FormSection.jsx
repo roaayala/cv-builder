@@ -10,7 +10,7 @@ export default function FormSection({ title, children }) {
   };
 
   return (
-    <section>
+    <section className="p-4 border border-neutral-200 shadow-lg rounded-lg">
       <FormHeader sectionTitle={title} isOpen={isOpen} onOpen={handleOpen} />
 
       {isOpen && <div>{children}</div>}
