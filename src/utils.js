@@ -47,3 +47,20 @@ export const EXAMPLE_RESUME = {
     },
   ],
 };
+
+export const EMPTY_RESUME = {
+  personalInformation: {
+    fullName: "",
+    jobTitle: "",
+    location: "",
+  },
+  contact: {
+    email: "",
+    phone: "",
+    website: "",
+  },
+  professionalSummary: "",
+  skill: [],
+  education: [],
+  employment: [],
+};

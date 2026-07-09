@@ -1,10 +1,18 @@
 import { useState } from "react";
-import { EXAMPLE_RESUME } from "../utils";
+import { EMPTY_RESUME, EXAMPLE_RESUME } from "../utils";
 
 export function useResume() {
   const [resume, setResume] = useState(EXAMPLE_RESUME);
 
   const handlers = {
+    resetResume: () => {
+      setResume(EMPTY_RESUME);
+    },
+
+    useResumeTemplate: () => {
+      setResume(EXAMPLE_RESUME);
+    },
+
     personalInfo: (e) => {
       setResume({
         ...resume,

@@ -1,4 +1,6 @@
+import { File, FileText } from "lucide-react";
 import Form from "./components/layouts/Form";
+import Button from "./components/ui/Button";
 import { Resume } from "./features/resume-preview";
 import { useResume } from "./hooks/useResume";
 
@@ -7,8 +9,23 @@ export default function App() {
 
   return (
     <div className="flex h-screen overflow-hidden bg-neutral-100">
-      <div className="h-full w-sm bg-white shadow-2xl z-10 shrink-0">
+      <div className="h-full w-sm bg-white shadow-2xl z-10 shrink-0 flex flex-col">
         <Form data={resume} handlers={handlers} />
+
+        <div className="p-6 grid grid-cols-2 gap-4 shrink-0">
+          <Button
+            icon={<File size={18} />}
+            text={"Reset"}
+            variant="danger"
+            onClick={handlers.resetResume}
+          />
+
+          <Button
+            icon={<FileText size={18} />}
+            text={"Use Template"}
+            onClick={handlers.useResumeTemplate}
+          />
+        </div>
       </div>
 
       <div className="flex-1 h-full overflow-y-auto p-8 flex justify-center">
