@@ -1,6 +1,7 @@
 export default function TextInput({
   id,
   label,
+  name,
   placeholder,
   type = "text",
   required = false,
@@ -8,16 +9,16 @@ export default function TextInput({
   onChange,
 }) {
   return (
-    <div className="flex flex-col">
-      <label htmlFor={id} className="">
+    <div className="flex flex-col gap-1">
+      <label className="text-sm" htmlFor={id}>
         {label}
       </label>
       <input
-        className=""
+        className="border rounded-sm py-1 px-2 text-sm"
         required={required}
         id={id}
         placeholder={placeholder}
-        name={id}
+        name={name}
         value={value}
         type={type}
         onChange={onChange}

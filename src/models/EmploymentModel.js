@@ -1,14 +1,14 @@
-export default function createEducation({
+export default function createEmployment({
   id,
-  institute = "",
-  degree = "",
+  workplace = "",
+  role = "",
   startYear = "",
   endYear = "",
 } = {}) {
   return {
     id: id || crypto.randomUUID(),
-    institute,
-    degree,
+    workplace,
+    role,
     startYear,
     endYear,
   };

@@ -1,10 +1,18 @@
 import { useState } from "react";
-import { EXAMPLE_RESUME } from "../utils";
+import { EMPTY_RESUME, EXAMPLE_RESUME } from "../utils";
 
 export function useResume() {
   const [resume, setResume] = useState(EXAMPLE_RESUME);
 
   const handlers = {
+    resetResume: () => {
+      setResume(EMPTY_RESUME);
+    },
+
+    useResumeTemplate: () => {
+      setResume(EXAMPLE_RESUME);
+    },
+
     personalInfo: (e) => {
       setResume({
         ...resume,
@@ -40,7 +48,7 @@ export function useResume() {
       edit: (id, editedSkill) => {
         const updatedSkill = resume.skill.map((s) => {
           if (s.id === id) {
-            return { ...s, name: editedSkill };
+            return editedSkill;
           }
           return s;
         });
@@ -68,12 +76,48 @@ export function useResume() {
         });
       },
 
+      edit: (id, editedEducation) => {
+        const updatedEducation = resume.education.map((ed) => {
+          if (ed.id === id) {
+            return editedEducation;
+          }
+          return ed;
+        });
+
+        setResume({ ...resume, education: updatedEducation });
+      },
+
       delete: (id) => {
         const filteredEducation = resume.education.filter((e) => e.id !== id);
         setResume({ ...resume, education: filteredEducation });
       },
     },
+
+    employment: {
+      add: (newEmployment) => {
+        setResume({
+          ...resume,
+          employment: [...resume.employment, newEmployment],
+        });
+      },
+
+      edit: (id, editedEmployment) => {
+        const updatedEmployment = resume.employment.map((ed) => {
+          if (ed.id === id) {
+            return editedEmployment;
+          }
+          return ed;
+        });
+
+        setResume({ ...resume, employment: updatedEmployment });
+      },
+
+      delete: (id) => {
+        const filteredEmployment = resume.employment.filter((e) => e.id !== id);
+        setResume({ ...resume, employment: filteredEmployment });
+      },
+    },
   };
 
-  return [resume, handlers];
+  return { resume, handlers };
 }
