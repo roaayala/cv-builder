@@ -65,12 +65,7 @@ export default function EducationAddItem({ draft, actions }) {
           text={"Save"}
           onClick={(e) => {
             e.preventDefault();
-            actions.handleSaveAdd([
-              "workplace",
-              "role",
-              "startYear",
-              "endYear",
-            ]);
+            actions.handleSaveAdd(["workplace", "role", "startYear"]);
           }}
         />
       </div>

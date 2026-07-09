@@ -67,12 +67,7 @@ export default function EducationEditItem({ draft, actions }) {
           text={"Save"}
           onClick={(e) => {
             e.preventDefault();
-            actions.handleSaveEdit([
-              "institute",
-              "degree",
-              "startYear",
-              "endYear",
-            ]);
+            actions.handleSaveEdit(["institute", "degree", "startYear"]);
           }}
         />
       </div>

@@ -5,7 +5,7 @@ import TextInput from "../../../components/ui/TextInput";
 export default function EmploymentEditItem({ draft, actions }) {
   return (
     <div className="flex flex-col gap-4 mb-4">
-      <div>
+      <div className="flex flex-col gap-2">
         <TextInput
           id={"editWorkplace"}
           label={"Edit Workplace"}
@@ -28,29 +28,27 @@ export default function EmploymentEditItem({ draft, actions }) {
           }}
         />
 
-        <div>
-          <TextInput
-            id={"editStartYear"}
-            label={"Edit Start Year"}
-            placeholder={"Start Year"}
-            name={"startYear"}
-            value={draft.startYear}
-            onChange={(e) => {
-              actions.handleChange(e);
-            }}
-          />
+        <TextInput
+          id={"editStartYear"}
+          label={"Edit Start Year"}
+          placeholder={"Start Year"}
+          name={"startYear"}
+          value={draft.startYear}
+          onChange={(e) => {
+            actions.handleChange(e);
+          }}
+        />
 
-          <TextInput
-            id={"editEndYear"}
-            label={"Edit End Year"}
-            placeholder={"End Year"}
-            name={"endYear"}
-            value={draft.endYear}
-            onChange={(e) => {
-              actions.handleChange(e);
-            }}
-          />
-        </div>
+        <TextInput
+          id={"editEndYear"}
+          label={"Edit End Year"}
+          placeholder={"End Year"}
+          name={"endYear"}
+          value={draft.endYear}
+          onChange={(e) => {
+            actions.handleChange(e);
+          }}
+        />
       </div>
 
       <div className="flex justify-end gap-4">
@@ -69,12 +67,7 @@ export default function EmploymentEditItem({ draft, actions }) {
           text={"Save"}
           onClick={(e) => {
             e.preventDefault();
-            actions.handleSaveEdit([
-              "workplace",
-              "role",
-              "startYear",
-              "endYear",
-            ]);
+            actions.handleSaveEdit(["workplace", "role", "startYear"]);
           }}
         />
       </div>

@@ -17,7 +17,7 @@ export default function Form({ data, handlers }) {
     employment,
   } = data;
   return (
-    <form className="w-lg flex flex-col gap-4 p-4">
+    <form className="h-full overflow-y-auto flex flex-col gap-6 p-6">
       <PersonalInformationForm data={personalInformation} handlers={handlers} />
       <ContactForm data={contact} handlers={handlers} />
       <ProfessionalSummaryForm data={professionalSummary} handlers={handlers} />
