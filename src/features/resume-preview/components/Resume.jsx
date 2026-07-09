@@ -15,13 +15,15 @@ export default function Resume({ data }) {
     employment,
   } = data;
   return (
-    <main className="w-full flex flex-col gap-8">
-      <PersonalInformation data={personalInformation} />
-      <ProfessionalSummary data={professionalSummary} />
-      <Skill data={skill} />
-      <Education data={education} />
-      <Employment data={employment} />
-      <Contact data={contact} />
+    <main className="w-[210mm] min-h-[297mm] bg-white p-10 shadow-lg">
+      <div className="flex flex-col gap-6">
+        <PersonalInformation data={personalInformation} />
+        <ProfessionalSummary data={professionalSummary} />
+        <Skill data={skill} />
+        <Education data={education} />
+        <Employment data={employment} />
+        <Contact data={contact} />
+      </div>
     </main>
   );
 }

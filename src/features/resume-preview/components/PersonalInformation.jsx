@@ -1,10 +1,14 @@
+import ResumeSection from "../../../components/ui/ResumeSection";
+
 export default function PersonalInformation({ data }) {
   const { fullName, jobTitle, location } = data;
   return (
-    <section>
-      <h1 className="d">{fullName}</h1>
-      <p>{jobTitle}</p>
-      <p>{location}</p>
-    </section>
+    <ResumeSection>
+      <h1 className="font-bold text-center text-4xl mb-2">{fullName}</h1>
+      <div className="flex justify-center gap-8">
+        <p>{jobTitle}</p>
+        <p>{location}</p>
+      </div>
+    </ResumeSection>
   );
 }

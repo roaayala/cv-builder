@@ -119,5 +119,5 @@ export function useResume() {
     },
   };
 
-  return [resume, handlers];
+  return { resume, handlers };
 }
