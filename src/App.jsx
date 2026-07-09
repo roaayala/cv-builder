@@ -1,3 +1,5 @@
+import { useRef } from "react";
+import { useReactToPrint } from "react-to-print";
 import { File, FileText, Share } from "lucide-react";
 import Form from "./components/layouts/Form";
 import Button from "./components/ui/Button";
@@ -6,6 +8,13 @@ import { useResume } from "./hooks/useResume";
 
 export default function App() {
   const { resume, handlers } = useResume();
+
+  const resumeRef = useRef(null);
+
+  const handlePrint = useReactToPrint({
+    contentRef: resumeRef,
+    documentTitle: `${resume.personalInformation?.fullName || "Resume"}_CV`,
+  });
 
   return (
     <div className="flex h-screen overflow-hidden bg-neutral-100">
@@ -18,6 +27,7 @@ export default function App() {
               text={"Export to PDF"}
               icon={<Share size={18} />}
               variant="primary"
+              onClick={handlePrint}
             />
           </div>
           <div className="grid grid-cols-2 gap-4 shrink-0">
@@ -38,7 +48,9 @@ export default function App() {
       </div>
 
       <div className="flex-1 h-full overflow-y-auto p-8 flex justify-center">
-        <Resume data={resume} />
+        <div ref={resumeRef}>
+          <Resume data={resume} />
+        </div>
       </div>
     </div>
   );
