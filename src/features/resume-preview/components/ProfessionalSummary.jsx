@@ -1,8 +1,10 @@
+import ResumeSection from "../../../components/ui/ResumeSection";
+
 export default function ProfessionalSummary({ data }) {
   return (
-    <section>
-      <h2>Professional Summary</h2>
-      <p>{data}</p>
-    </section>
+    <ResumeSection
+      headerChildren={<h2>Professional Summary</h2>}
+      bodyChildren={<p>{data}</p>}
+    />
   );
 }
