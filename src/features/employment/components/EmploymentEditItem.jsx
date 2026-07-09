@@ -29,6 +29,7 @@ export default function EmploymentEditItem({ draft, actions }) {
         />
 
         <TextInput
+          type={"number"}
           id={"editStartYear"}
           label={"Edit Start Year"}
           placeholder={"Start Year"}
@@ -40,6 +41,7 @@ export default function EmploymentEditItem({ draft, actions }) {
         />
 
         <TextInput
+          type={"number"}
           id={"editEndYear"}
           label={"Edit End Year"}
           placeholder={"End Year"}

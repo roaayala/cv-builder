@@ -14,6 +14,7 @@ export default function ContactForm({ data, handlers }) {
           placeholder={"Email"}
           required={true}
           value={email}
+          type={"email"}
           onChange={(e) => {
             handlers.contact(e);
           }}

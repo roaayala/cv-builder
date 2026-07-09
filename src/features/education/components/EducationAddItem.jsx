@@ -29,6 +29,7 @@ export default function EducationAddItem({ draft, actions }) {
         />
 
         <TextInput
+          type={"number"}
           id={"newStartYear"}
           label={"Start Year"}
           placeholder={"Start Year"}
@@ -40,6 +41,7 @@ export default function EducationAddItem({ draft, actions }) {
         />
 
         <TextInput
+          type={"number"}
           id={"newEndYear"}
           label={"End Year"}
           placeholder={"End Year"}
