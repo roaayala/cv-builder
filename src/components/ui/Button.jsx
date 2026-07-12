@@ -1,4 +1,10 @@
-export default function Button({ text, icon, variant = "secondary", onClick }) {
+export default function Button({
+  text,
+  icon,
+  variant = "secondary",
+  onClick,
+  disabled,
+}) {
   const baseStyle =
     "flex items-center justify-center gap-2 rounded-md font-medium";
 
@@ -12,10 +18,15 @@ export default function Button({ text, icon, variant = "secondary", onClick }) {
       "bg-white text-red-600 hover:bg-red-50 border border-red-200 focus:ring-red-500",
     ghost: "bg-transparent text-gray-600 hover:bg-gray-100 focus:ring-gray-200",
   };
+
+  const disabledStyle = disabled
+    ? "opacity-50 cursor-not-allowed"
+    : "cursor-pointer";
   return (
     <button
-      className={`${baseStyle} ${paddingStyle} ${colorVariants[variant]}`}
+      className={`${baseStyle} ${paddingStyle} ${colorVariants[variant]} ${disabledStyle}`}
       onClick={onClick}
+      disabled={disabled}
     >
       {icon && <span>{icon}</span>}
       {text && <span>{text}</span>}
